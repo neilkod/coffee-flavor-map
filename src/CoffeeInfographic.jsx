@@ -327,6 +327,39 @@ function PopoverContent({ dim, color, highlight, onClose }) {
   );
 }
 
+// ─── Process Badge ───────────────────────────────────────────────────────────
+
+const PROCESS_COLORS = {
+  "Washed":     { bg: "#1A2E3A", border: "#2A6A8A", text: "#7ABBD0" },
+  "Natural":    { bg: "#2E1A0E", border: "#8A4A2A", text: "#D09070" },
+  "Honey":      { bg: "#2E2A0A", border: "#8A7A20", text: "#D0C060" },
+  "Wet-Hulled": { bg: "#1A2A1A", border: "#3A6A3A", text: "#7AB87A" },
+  "Monsooned":  { bg: "#2A1A2E", border: "#6A3A8A", text: "#B07AD0" },
+};
+
+function ProcessBadge({ process, size = "sm" }) {
+  const c = PROCESS_COLORS[process] ?? { bg: "#1F1409", border: COLORS.gridOuter, text: COLORS.label };
+  const fs = size === "lg" ? 10 : 8.5;
+  const px = size === "lg" ? 10 : 7;
+  const py = size === "lg" ? 3 : 2;
+  return (
+    <span style={{
+      display: "inline-block",
+      fontSize: fs,
+      color: c.text,
+      background: c.bg,
+      border: `1px solid ${c.border}`,
+      borderRadius: 20,
+      padding: `${py}px ${px}px`,
+      letterSpacing: "0.1em",
+      fontFamily: "Georgia, serif",
+      textTransform: "uppercase",
+    }}>
+      {process}
+    </span>
+  );
+}
+
 // ─── Coffee Card ──────────────────────────────────────────────────────────────
 
 function CoffeeCard({ coffee, index, activePopoverDim, onDotClick, onClosePopover, onSelect }) {
@@ -362,10 +395,11 @@ function CoffeeCard({ coffee, index, activePopoverDim, onDotClick, onClosePopove
         </div>
         <div style={{
           fontSize: 15, color: "#F0DEB8", fontFamily: "Georgia, serif",
-          letterSpacing: "0.04em", lineHeight: 1.2,
+          letterSpacing: "0.04em", lineHeight: 1.2, marginBottom: 5,
         }}>
           {coffee.name}
         </div>
+        <ProcessBadge process={coffee.process} />
       </div>
 
       <RadarChart
@@ -439,6 +473,17 @@ const TAG_INDEX = DIMS.map((_, dimIdx) => {
   });
   return Array.from(map.entries()).sort((a, b) => b[1].length - a[1].length);
 });
+
+// Process index: process method → coffees[]
+const PROCESS_INDEX = (() => {
+  const map = new Map();
+  coffees.forEach((coffee) => {
+    if (!map.has(coffee.process)) map.set(coffee.process, []);
+    map.get(coffee.process).push(coffee);
+  });
+  // Sort by count descending
+  return Array.from(map.entries()).sort((a, b) => b[1].length - a[1].length);
+})();
 
 // ─── Chip Radar Tooltip ───────────────────────────────────────────────────────
 
@@ -576,6 +621,96 @@ function TagView() {
 
   return (
     <>
+      {/* Process section */}
+      <div style={{
+        background: COLORS.cardBg,
+        border: `1px solid ${COLORS.cardBorder}`,
+        borderRadius: 8,
+        padding: "16px 16px 18px",
+        marginBottom: 16,
+      }}>
+        <div style={{
+          display: "flex", alignItems: "center", gap: 8,
+          marginBottom: 14, paddingBottom: 10,
+          borderBottom: `1px solid ${COLORS.gridOuter}33`,
+        }}>
+          <div style={{
+            width: 8, height: 8, borderRadius: "50%",
+            background: COLORS.gridOuter, flexShrink: 0,
+          }} />
+          <span style={{
+            fontSize: 11, color: COLORS.label,
+            letterSpacing: "0.18em", textTransform: "uppercase",
+          }}>
+            Processing Method
+          </span>
+          <span style={{
+            fontSize: 9, color: COLORS.sub, fontStyle: "italic",
+            fontFamily: "Georgia, serif", marginLeft: "auto",
+            letterSpacing: "0.03em",
+          }}>
+            how the cherry is prepared after harvest
+          </span>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {PROCESS_INDEX.map(([process, processCoffees]) => {
+            const c = PROCESS_COLORS[process] ?? { bg: "#1F1409", border: COLORS.gridOuter, text: COLORS.label };
+            return (
+              <div key={process}>
+                <div style={{
+                  display: "flex", alignItems: "center", gap: 8, marginBottom: 6,
+                }}>
+                  <span style={{
+                    fontSize: 10, color: c.text,
+                    background: c.bg, border: `1px solid ${c.border}`,
+                    borderRadius: 20, padding: "1px 9px",
+                    letterSpacing: "0.1em", textTransform: "uppercase",
+                    fontFamily: "Georgia, serif",
+                  }}>
+                    {process}
+                  </span>
+                  <span style={{
+                    fontSize: 9, color: COLORS.sub, fontStyle: "italic",
+                    fontFamily: "Georgia, serif",
+                  }}>
+                    {processCoffees.length} origin{processCoffees.length !== 1 ? "s" : ""}
+                  </span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                  {processCoffees.map((coffee) => {
+                    const isActive = activeChip?.coffee.name === coffee.name;
+                    return (
+                      <span
+                        key={coffee.name}
+                        onMouseEnter={(e) => handleChipEnter(e, coffee)}
+                        onMouseLeave={() => setActiveChip(null)}
+                        onClick={(e) => handleChipClick(e, coffee)}
+                        style={{
+                          fontSize: 9.5,
+                          color: isActive ? "#F0DEB8" : COLORS.label,
+                          background: isActive ? `${c.border}35` : `${c.border}18`,
+                          border: `1px solid ${isActive ? c.border : c.border + "55"}`,
+                          borderRadius: 12,
+                          padding: "2px 9px",
+                          fontFamily: "Georgia, serif",
+                          letterSpacing: "0.03em",
+                          whiteSpace: "nowrap",
+                          cursor: "pointer",
+                          transition: "all 0.15s",
+                        }}
+                      >
+                        {coffee.name}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <div className="tag-grid">
         {DIMS.map((dim, i) => (
           <div
@@ -1134,11 +1269,12 @@ function CoffeeDetailModal({ coffee, onClose }) {
               {coffee.region}
             </div>
             <h2 style={{
-              margin: 0, fontSize: 20, fontWeight: "normal",
+              margin: "0 0 8px", fontSize: 20, fontWeight: "normal",
               color: "#F0DEB8", letterSpacing: "0.05em",
             }}>
               {coffee.name}
             </h2>
+            <ProcessBadge process={coffee.process} size="lg" />
           </div>
           <button
             onClick={onClose}
