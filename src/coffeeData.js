@@ -1,0 +1,365 @@
+export const coffees = [
+  {
+    name: "Ethiopian",
+    region: "East Africa",
+    scores: [9, 8, 7, 3, 3, 2],
+    note: "Blueberry · Jasmine · Citrus",
+    highlights: [
+      {
+        tags: ["🫐 Blueberry", "🍋 Citrus", "🍑 Stone Fruit"],
+        note: "Ethiopian naturals are renowned for intense berry and citrus brightness.",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌿 Bergamot", "🌹 Rose"],
+        note: "Washed Yirgacheffe is prized for delicate floral aromatics.",
+      },
+      {
+        tags: ["🍯 Honey", "🟤 Caramel", "🌾 Brown Sugar"],
+        note: "Natural sweetness balanced by bright acidity.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Colombian",
+    region: "South America",
+    scores: [6, 4, 8, 6, 3, 3],
+    note: "Caramel · Red Fruit · Walnut",
+    highlights: [
+      {
+        tags: ["🍒 Red Cherry", "🍎 Apple", "🍊 Tangerine"],
+        note: "Colombian coffees show bright, clean fruit notes with a pleasant tartness.",
+      },
+      null,
+      {
+        tags: ["🍮 Caramel", "🍬 Toffee", "🟤 Brown Sugar"],
+        note: "High sweetness and medium body make Colombian a crowd-pleasing classic.",
+      },
+      {
+        tags: ["🌰 Walnut", "🥜 Hazelnut"],
+        note: "Mild nutty undertones add depth without overpowering the cup.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Kenyan",
+    region: "East Africa",
+    scores: [8, 5, 6, 3, 4, 2],
+    note: "Blackcurrant · Tomato · Wine",
+    highlights: [
+      {
+        tags: ["🍇 Blackcurrant", "🍅 Tomato", "🍓 Berry"],
+        note: "Kenya AA is famous for its vivid, wine-like fruit acidity and bold berry character.",
+      },
+      {
+        tags: ["🌺 Floral", "🌿 Herbal"],
+        note: "Subtle floral hints complement the dominant fruity profile.",
+      },
+      {
+        tags: ["🍷 Wine-like", "🍬 Light Caramel"],
+        note: "Balanced sweetness underpins the complex, layered cup.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Sumatran",
+    region: "Indonesia",
+    scores: [3, 2, 4, 6, 5, 9],
+    note: "Cedar · Dark Chocolate · Tobacco",
+    highlights: [
+      null,
+      null,
+      null,
+      {
+        tags: ["🍫 Dark Chocolate", "🌰 Cedar"],
+        note: "Wet-hulled processing imparts a distinctive woody, chocolaty depth.",
+      },
+      {
+        tags: ["🌶️ Pepper", "🍂 Clove"],
+        note: "Spicy undertones add warmth to the heavy, full-bodied cup.",
+      },
+      {
+        tags: ["🪵 Cedar", "🍂 Tobacco", "🌍 Forest Floor"],
+        note: "Sumatra's earthy, musty character is unlike any other origin in the world.",
+      },
+    ],
+  },
+  {
+    name: "Brazilian",
+    region: "South America",
+    scores: [3, 2, 7, 8, 4, 5],
+    note: "Chocolate · Hazelnut · Brown Sugar",
+    highlights: [
+      null,
+      null,
+      {
+        tags: ["🟤 Brown Sugar", "🍫 Milk Chocolate", "🍮 Caramel"],
+        note: "Brazil's natural processing yields a reliably sweet, dessert-like cup.",
+      },
+      {
+        tags: ["🌰 Hazelnut", "🥜 Peanut", "🍫 Cocoa"],
+        note: "Rich nut and chocolate notes define the classic Brazilian espresso profile.",
+      },
+      {
+        tags: ["🌶️ Mild Spice"],
+        note: "A gentle spicy warmth lingers in the finish.",
+      },
+      {
+        tags: ["🌍 Low Earthy"],
+        note: "Mild earthiness contributes to a smooth, grounded body.",
+      },
+    ],
+  },
+  {
+    name: "Guatemalan",
+    region: "Central America",
+    scores: [5, 3, 7, 7, 5, 4],
+    note: "Dark Cocoa · Apple · Toffee",
+    highlights: [
+      {
+        tags: ["🍎 Apple", "🍑 Peach"],
+        note: "High-altitude Guatemalan coffees show bright, clean orchard fruit notes.",
+      },
+      null,
+      {
+        tags: ["🍮 Toffee", "🍬 Brown Sugar", "🍫 Cocoa"],
+        note: "Rich sweetness with a smooth, full-bodied mouthfeel.",
+      },
+      {
+        tags: ["🍫 Dark Cocoa", "🌰 Almond"],
+        note: "Distinctive cocoa and nut character typical of Antigua and Huehuetenango regions.",
+      },
+      {
+        tags: ["🌶️ Mild Pepper", "🌿 Herbal"],
+        note: "Subtle spicy finish adds complexity to the well-balanced profile.",
+      },
+      null,
+    ],
+  },
+  {
+    name: "Costa Rican",
+    region: "Central America",
+    scores: [6, 4, 8, 5, 3, 2],
+    note: "Honey · Peach · Mild Citrus",
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍊 Mild Citrus", "🍒 Cherry"],
+        note: "Costa Rican honey-processed coffees deliver clean, bright fruit character.",
+      },
+      null,
+      {
+        tags: ["🍯 Honey", "🍬 Caramel", "🌾 Vanilla"],
+        note: "Honey processing creates exceptional sweetness and silky mouthfeel.",
+      },
+      {
+        tags: ["🌰 Light Nut"],
+        note: "A gentle nutty undertone rounds out the sweet, clean cup.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Yemeni",
+    region: "Middle East",
+    scores: [5, 4, 6, 4, 7, 6],
+    note: "Cardamom · Wine · Dried Fruit",
+    highlights: [
+      {
+        tags: ["🍇 Dried Grape", "🫐 Fig", "🍒 Cherry"],
+        note: "Ancient dry-processed Yemeni coffees yield complex dried fruit character.",
+      },
+      null,
+      {
+        tags: ["🍷 Wine", "🍮 Tamarind", "🍯 Honey"],
+        note: "Fermented sweetness mirrors fine wine in complexity and depth.",
+      },
+      null,
+      {
+        tags: ["🌿 Cardamom", "🌶️ Pepper", "🍂 Cinnamon"],
+        note: "Yemeni coffee is synonymous with aromatic spice, echoing traditional Arabic coffee culture.",
+      },
+      {
+        tags: ["🪵 Wood", "🌍 Terroir"],
+        note: "Ancient heirloom varieties grown in mountain terraces deliver unmistakable earthy depth.",
+      },
+    ],
+  },
+  {
+    name: "Jamaican Blue",
+    region: "Caribbean",
+    scores: [4, 3, 7, 7, 3, 3],
+    note: "Mild · Sweet · Velvety Clean",
+    highlights: [
+      null,
+      null,
+      {
+        tags: ["🍮 Mild Caramel", "🌾 Cream", "🍬 Light Sweet"],
+        note: "Jamaica Blue Mountain is celebrated for its gentle sweetness and clean, balanced finish.",
+      },
+      {
+        tags: ["🌰 Mild Nut", "🍫 Cocoa"],
+        note: "Subtle nutty and cocoa notes complement the velvety, low-acid profile.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Hawaiian Kona",
+    region: "Pacific",
+    scores: [5, 5, 7, 6, 3, 2],
+    note: "Macadamia · Floral · Sweet",
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍊 Light Citrus"],
+        note: "Kona's volcanic soil contributes a subtle, clean fruitiness to the cup.",
+      },
+      {
+        tags: ["🌸 Floral", "🌿 Herbal"],
+        note: "Delicate floral aromas distinguish Kona from other Pacific origins.",
+      },
+      {
+        tags: ["🍮 Caramel", "🌾 Honey", "🍬 Soft Sweet"],
+        note: "Medium sweetness and silky body make Kona approachable and refined.",
+      },
+      {
+        tags: ["🌰 Macadamia", "🥜 Butter Nut"],
+        note: "Kona's signature macadamia-like nuttiness is a beloved hallmark of Hawaiian coffee.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Vietnamese",
+    region: "Southeast Asia",
+    scores: [2, 1, 5, 7, 4, 8],
+    note: "Dark Roast · Earthy · Robusta Bold",
+    highlights: [
+      null,
+      null,
+      {
+        tags: ["🍫 Dark Chocolate", "🌾 Roasted Grain"],
+        note: "Robusta beans roasted dark bring a bold, bitter sweetness typical of Vietnamese phin coffee.",
+      },
+      {
+        tags: ["🌰 Woody Nut", "🍫 Cocoa"],
+        note: "Heavy body and nutty cocoa notes suit the strong, condensed-milk style of preparation.",
+      },
+      null,
+      {
+        tags: ["🌍 Rubber", "🪵 Musty Wood", "🌿 Loam"],
+        note: "Vietnamese Robusta carries a pronounced earthy, forest-floor character unique to the region.",
+      },
+    ],
+  },
+  {
+    name: "Peruvian",
+    region: "South America",
+    scores: [5, 5, 7, 6, 3, 3],
+    note: "Citrus · Mild Floral · Caramel",
+    highlights: [
+      {
+        tags: ["🍋 Citrus", "🍑 Peach", "🍒 Mild Cherry"],
+        note: "High-altitude Peruvian beans show clean, bright fruit with gentle acidity.",
+      },
+      {
+        tags: ["🌸 Mild Floral", "🌿 Herbal"],
+        note: "Subtle floral notes add elegance to the balanced, approachable cup.",
+      },
+      {
+        tags: ["🍮 Caramel", "🍬 Toffee", "🌾 Honey"],
+        note: "Consistent sweetness and smooth body make Peruvian a reliable crowd-pleaser.",
+      },
+      {
+        tags: ["🌰 Almond", "🥜 Light Nut"],
+        note: "Mild nutty undertones round out the clean, balanced finish.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Mexican",
+    region: "North America",
+    scores: [4, 3, 6, 7, 4, 4],
+    note: "Chocolate · Almond · Light Body",
+    highlights: [
+      null,
+      null,
+      {
+        tags: ["🍫 Milk Chocolate", "🍮 Light Caramel"],
+        note: "Mexican coffees offer mild, pleasant sweetness well-suited to medium roast.",
+      },
+      {
+        tags: ["🌰 Almond", "🥜 Pecan", "🍫 Cocoa"],
+        note: "Nutty and chocolaty notes define the easygoing, accessible Mexican profile.",
+      },
+      {
+        tags: ["🌶️ Mild Spice", "🌿 Herbal"],
+        note: "A gentle herbaceous spice adds character without overpowering the light body.",
+      },
+      {
+        tags: ["🌍 Mild Earth"],
+        note: "Low but present earthy tones contribute to the round, approachable finish.",
+      },
+    ],
+  },
+  {
+    name: "Rwandan",
+    region: "East Africa",
+    scores: [7, 6, 7, 4, 3, 2],
+    note: "Peach · Floral · Caramel",
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍊 Orange", "🫐 Blackberry"],
+        note: "Rwanda's fully-washed coffees deliver vivid, juicy stone fruit and berry brightness.",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌹 Rose", "🌺 Hibiscus"],
+        note: "Rwandan washed lots are among the most floral in the African coffee belt.",
+      },
+      {
+        tags: ["🍮 Caramel", "🍬 Toffee", "🌾 Brown Sugar"],
+        note: "Sweet and fruit-forward balance makes Rwandan coffee approachable yet complex.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Indian Monsoon",
+    region: "South Asia",
+    scores: [2, 2, 5, 6, 6, 9],
+    note: "Spice · Woody · Low Acid",
+    highlights: [
+      null,
+      null,
+      {
+        tags: ["🍫 Dark Chocolate", "🌾 Malt"],
+        note: "Monsooning reduces acidity and amplifies a heavy, malty sweetness.",
+      },
+      {
+        tags: ["🌰 Cedar", "🍫 Cocoa"],
+        note: "Woody and chocolaty notes emerge from the unique monsooning process.",
+      },
+      {
+        tags: ["🌿 Cardamom", "🍂 Clove", "🌶️ Pepper"],
+        note: "Indian Monsoon Malabar is renowned for its bold spice character, evoking masala chai.",
+      },
+      {
+        tags: ["🪵 Wet Wood", "🌍 Mushroom", "🌿 Tobacco"],
+        note: "The monsoon exposure creates an unmistakably deep, musty earthiness unlike any other origin.",
+      },
+    ],
+  },
+];
