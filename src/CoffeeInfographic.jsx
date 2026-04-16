@@ -1224,7 +1224,7 @@ function CoffeeDetailModal({ coffee, onClose }) {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop + centering container */}
       <div
         onClick={onClose}
         style={{
@@ -1232,18 +1232,18 @@ function CoffeeDetailModal({ coffee, onClose }) {
           zIndex: 500,
           background: "rgba(0,0,0,0.75)",
           backdropFilter: "blur(2px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
         }}
-      />
+      >
       {/* Modal */}
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          position: "fixed",
-          top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 501,
-          width: "min(760px, 94vw)",
-          maxHeight: "88vh",
+          width: "min(760px, 100%)",
+          maxHeight: "calc(100vh - 40px)",
           overflowY: "auto",
           background: "#1A1008",
           border: `1px solid ${COLORS.gridOuter}`,
@@ -1251,6 +1251,7 @@ function CoffeeDetailModal({ coffee, onClose }) {
           fontFamily: "Georgia, serif",
           animation: "popoverIn 0.18s ease both",
           boxShadow: "0 24px 80px rgba(0,0,0,0.8)",
+          flexShrink: 0,
         }}
       >
         {/* Header */}
@@ -1458,6 +1459,7 @@ function CoffeeDetailModal({ coffee, onClose }) {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
