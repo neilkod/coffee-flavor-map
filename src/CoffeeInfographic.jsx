@@ -425,7 +425,86 @@ function CoffeeCard({ coffee, index, activePopoverDim, onDotClick, onClosePopove
 
 // ─── Heatmap View ────────────────────────────────────────────────────────────
 
+function HeatmapTooltip({ coffee, dimIndex, anchorRect }) {
+  const color = DIM_COLORS[dimIndex];
+  const highlight = coffee.highlights[dimIndex];
+  const TOOLTIP_WIDTH = 220;
+
+  // Position below the cell, clamped to viewport edges
+  const top = anchorRect.bottom + 8;
+  const rawLeft = anchorRect.left + anchorRect.width / 2 - TOOLTIP_WIDTH / 2;
+  const left = Math.max(8, Math.min(rawLeft, window.innerWidth - TOOLTIP_WIDTH - 8));
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top,
+        left,
+        width: TOOLTIP_WIDTH,
+        zIndex: 200,
+        background: "#1F1409",
+        border: `1px solid ${color}99`,
+        borderRadius: 8,
+        padding: "10px 12px",
+        boxShadow: `0 8px 32px rgba(0,0,0,0.7), 0 0 14px ${color}1A`,
+        fontFamily: "Georgia, serif",
+        animation: "popoverIn 0.15s ease both",
+        pointerEvents: "none",
+      }}
+    >
+      {/* Header */}
+      <div style={{
+        fontSize: 10, color, letterSpacing: "0.2em",
+        textTransform: "uppercase", marginBottom: 8,
+      }}>
+        {coffee.name} · {DIMS[dimIndex]}
+      </div>
+
+      {highlight ? (
+        <>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 7 }}>
+            {highlight.tags.map((tag) => (
+              <span key={tag} style={{
+                fontSize: 9, color,
+                background: `${color}30`,
+                border: `1px solid ${color}55`,
+                borderRadius: 20,
+                padding: "2px 8px",
+                letterSpacing: "0.04em",
+                whiteSpace: "nowrap",
+              }}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p style={{
+            margin: 0, fontSize: 10, color: COLORS.label,
+            fontStyle: "italic", lineHeight: 1.6, letterSpacing: "0.02em",
+          }}>
+            {highlight.note}
+          </p>
+        </>
+      ) : (
+        <p style={{
+          margin: 0, fontSize: 10, color: COLORS.sub,
+          fontStyle: "italic", lineHeight: 1.55,
+        }}>
+          Not a prominent characteristic for this origin.
+        </p>
+      )}
+    </div>
+  );
+}
+
 function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
+  const [tooltip, setTooltip] = useState(null);
+  // tooltip: { coffee, dimIndex, anchorRect } | null
+
+  function handleCellEnter(e, coffee, i) {
+    setTooltip({ coffee, dimIndex: i, anchorRect: e.currentTarget.getBoundingClientRect() });
+  }
+
   return (
     <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
       <div style={{
@@ -467,7 +546,7 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
         })}
 
         {/* Data rows */}
-        {coffees.map((coffee, rowIndex) => (
+        {coffees.map((coffee) => (
           <>
             {/* Name cell */}
             <div
@@ -500,6 +579,8 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
             {coffee.scores.map((score, i) => (
               <div
                 key={coffee.name + "-" + i}
+                onMouseEnter={(e) => handleCellEnter(e, coffee, i)}
+                onMouseLeave={() => setTooltip(null)}
                 style={{
                   position: "relative",
                   borderTop: `1px solid ${COLORS.cardBorder}`,
@@ -509,6 +590,7 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
                   borderRadius: 3,
                   overflow: "hidden",
                   minHeight: 44,
+                  cursor: "default",
                 }}
               >
                 {/* Color fill */}
@@ -517,8 +599,17 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
                   inset: 0,
                   background: DIM_COLORS[i],
                   opacity: 0.06 + (score / 10) * 0.74,
-                  transition: "opacity 0.3s",
+                  transition: "opacity 0.2s",
                 }} />
+                {/* Hover highlight ring */}
+                {tooltip?.coffee.name === coffee.name && tooltip?.dimIndex === i && (
+                  <div style={{
+                    position: "absolute", inset: 0,
+                    border: `1px solid ${DIM_COLORS[i]}`,
+                    borderRadius: 3,
+                    pointerEvents: "none",
+                  }} />
+                )}
                 {/* Score */}
                 <span style={{
                   position: "relative",
@@ -535,6 +626,15 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
           </>
         ))}
       </div>
+
+      {/* Tooltip portal */}
+      {tooltip && (
+        <HeatmapTooltip
+          coffee={tooltip.coffee}
+          dimIndex={tooltip.dimIndex}
+          anchorRect={tooltip.anchorRect}
+        />
+      )}
     </div>
   );
 }
