@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import { coffees } from "./coffeeData";
 
 const DIMS = ["Fruity", "Floral", "Sweet", "Nutty", "Spicy", "Earthy"];
+const DIM_DESCS = [
+  "berries, citrus, stone fruit",
+  "jasmine, rose, herbal",
+  "caramel, honey, sugar",
+  "hazelnut, almond, cocoa",
+  "pepper, clove, cinnamon",
+  "cedar, tobacco, soil",
+];
 const NUM = DIMS.length;
 
 const DIM_COLORS = [
@@ -566,29 +574,48 @@ export default function CoffeeInfographic() {
           }}>
             {DIMS.map((d, i) => {
               const active = sortDim === i;
+              const dimOpacity = active ? 1 : (sortDim === null ? 0.9 : 0.5);
               return (
                 <div
                   key={d}
                   onClick={() => handleDimClick(i)}
-                  style={{ display: "flex", alignItems: "center", gap: 5, cursor: "pointer" }}
+                  style={{
+                    display: "flex", flexDirection: "column", alignItems: "center",
+                    gap: 3, cursor: "pointer", minWidth: 70,
+                  }}
                 >
-                  <div style={{
-                    width: 7, height: 7, borderRadius: "50%",
-                    background: DIM_COLORS[i],
-                    opacity: active ? 1 : (sortDim === null ? 0.9 : 0.5),
-                    transition: "opacity 0.2s",
-                  }} />
+                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    <div style={{
+                      width: 7, height: 7, borderRadius: "50%",
+                      background: DIM_COLORS[i],
+                      opacity: dimOpacity,
+                      transition: "opacity 0.2s",
+                      flexShrink: 0,
+                    }} />
+                    <span style={{
+                      fontSize: 9.5,
+                      color: DIM_COLORS[i],
+                      letterSpacing: "0.08em",
+                      opacity: dimOpacity,
+                      borderBottom: active ? `1px solid ${DIM_COLORS[i]}` : "1px solid transparent",
+                      paddingBottom: 1,
+                      transition: "opacity 0.2s",
+                      userSelect: "none",
+                    }}>
+                      {d}{active ? (sortDir === "desc" ? " ↓" : " ↑") : ""}
+                    </span>
+                  </div>
                   <span style={{
-                    fontSize: 9.5,
+                    fontSize: 8.5,
                     color: DIM_COLORS[i],
-                    letterSpacing: "0.08em",
-                    opacity: active ? 1 : (sortDim === null ? 0.9 : 0.5),
-                    borderBottom: active ? `1px solid ${DIM_COLORS[i]}` : "1px solid transparent",
-                    paddingBottom: 1,
-                    transition: "opacity 0.2s",
+                    opacity: dimOpacity * 0.6,
+                    letterSpacing: "0.04em",
+                    fontStyle: "italic",
+                    fontFamily: "Georgia, serif",
                     userSelect: "none",
+                    transition: "opacity 0.2s",
                   }}>
-                    {d}{active ? (sortDir === "desc" ? " ↓" : " ↑") : ""}
+                    {DIM_DESCS[i]}
                   </span>
                 </div>
               );
