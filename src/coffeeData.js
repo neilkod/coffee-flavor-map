@@ -14,7 +14,7 @@ export const coffees = [
         note: "Washed Yirgacheffe is prized for delicate floral aromatics.",
       },
       {
-        tags: ["🍯 Honey", "🟤 Caramel", "🌾 Brown Sugar"],
+        tags: ["🍯 Honey", "🍮 Caramel", "🟤 Brown Sugar"],
         note: "Natural sweetness balanced by bright acidity.",
       },
       null,
@@ -56,7 +56,7 @@ export const coffees = [
         note: "Kenya AA is famous for its vivid, wine-like fruit acidity and bold berry character.",
       },
       {
-        tags: ["🌺 Floral", "🌿 Herbal"],
+        tags: ["🌸 Floral", "🌿 Herbal"],
         note: "Subtle floral hints complement the dominant fruity profile.",
       },
       {
@@ -155,7 +155,7 @@ export const coffees = [
       },
       null,
       {
-        tags: ["🍯 Honey", "🍬 Caramel", "🌾 Vanilla"],
+        tags: ["🍯 Honey", "🍮 Caramel", "🌾 Vanilla"],
         note: "Honey processing creates exceptional sweetness and silky mouthfeel.",
       },
       {
@@ -227,7 +227,7 @@ export const coffees = [
         note: "Delicate floral aromas distinguish Kona from other Pacific origins.",
       },
       {
-        tags: ["🍮 Caramel", "🌾 Honey", "🍬 Soft Sweet"],
+        tags: ["🍮 Caramel", "🍯 Honey", "🍬 Soft Sweet"],
         note: "Medium sweetness and silky body make Kona approachable and refined.",
       },
       {
@@ -276,7 +276,7 @@ export const coffees = [
         note: "Subtle floral notes add elegance to the balanced, approachable cup.",
       },
       {
-        tags: ["🍮 Caramel", "🍬 Toffee", "🌾 Honey"],
+        tags: ["🍮 Caramel", "🍬 Toffee", "🍯 Honey"],
         note: "Consistent sweetness and smooth body make Peruvian a reliable crowd-pleaser.",
       },
       {
@@ -328,7 +328,7 @@ export const coffees = [
         note: "Rwandan washed lots are among the most floral in the African coffee belt.",
       },
       {
-        tags: ["🍮 Caramel", "🍬 Toffee", "🌾 Brown Sugar"],
+        tags: ["🍮 Caramel", "🍬 Toffee", "🟤 Brown Sugar"],
         note: "Sweet and fruit-forward balance makes Rwandan coffee approachable yet complex.",
       },
       null,
@@ -377,7 +377,7 @@ export const coffees = [
         note: "Panama Geisha defines the ceiling of floral intensity in specialty coffee, often described as perfumed.",
       },
       {
-        tags: ["🍯 Peach Nectar", "🌾 Honey", "🍬 Brown Sugar"],
+        tags: ["🍯 Peach Nectar", "🍯 Honey", "🍬 Brown Sugar"],
         note: "Exceptional sweetness and silky body justify Geisha's reputation as the world's most celebrated cup.",
       },
       null,
@@ -400,7 +400,7 @@ export const coffees = [
         note: "Subtle but present floral character complements the dominant fruit profile.",
       },
       {
-        tags: ["🍯 Honey", "🍮 Caramel", "🌾 Brown Sugar"],
+        tags: ["🍯 Honey", "🍮 Caramel", "🟤 Brown Sugar"],
         note: "Balanced sweetness and a juicy, full body give Burundian coffee wide appeal.",
       },
       null,
@@ -440,7 +440,7 @@ export const coffees = [
       },
       null,
       {
-        tags: ["🍮 Caramel", "🌾 Honey", "🟤 Brown Sugar"],
+        tags: ["🍮 Caramel", "🍯 Honey", "🟤 Brown Sugar"],
         note: "Honduras is Central America's largest producer, known for consistently sweet, balanced cups.",
       },
       {
