@@ -884,12 +884,231 @@ function HeatmapView({ coffees, sortDim, onDimClick, sortDir }) {
   );
 }
 
+// ─── Data View ────────────────────────────────────────────────────────────────
+
+function DataView({ coffees, sortDim, sortDir, onDimClick }) {
+  return (
+    <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+      <table style={{
+        width: "100%", minWidth: 560, borderCollapse: "collapse",
+        fontFamily: "Georgia, serif",
+      }}>
+        <thead>
+          <tr>
+            {["Origin", "Region", ...DIMS, "Tasting Notes"].map((col, ci) => {
+              const dimIdx = ci - 2;
+              const isDim = ci >= 2 && ci <= 7;
+              const active = isDim && sortDim === dimIdx;
+              return (
+                <th
+                  key={col}
+                  onClick={isDim ? () => onDimClick(dimIdx) : undefined}
+                  style={{
+                    padding: "8px 10px",
+                    textAlign: isDim ? "center" : "left",
+                    fontSize: 9,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: isDim ? DIM_COLORS[dimIdx] : COLORS.sub,
+                    opacity: isDim ? (active ? 1 : 0.75) : 1,
+                    borderBottom: `1px solid ${COLORS.cardBorder}`,
+                    cursor: isDim ? "pointer" : "default",
+                    userSelect: "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {isDim
+                    ? `${col}${active ? (sortDir === "desc" ? " ↓" : " ↑") : ""}`
+                    : col}
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {coffees.map((coffee, ri) => (
+            <tr
+              key={coffee.name}
+              style={{ background: ri % 2 === 0 ? "transparent" : "#1C1108" }}
+            >
+              <td style={{
+                padding: "9px 10px",
+                fontSize: 12, color: "#F0DEB8",
+                letterSpacing: "0.03em",
+                borderBottom: `1px solid ${COLORS.cardBorder}`,
+                whiteSpace: "nowrap",
+              }}>
+                {coffee.name}
+              </td>
+              <td style={{
+                padding: "9px 10px",
+                fontSize: 9.5, color: COLORS.sub,
+                letterSpacing: "0.12em", textTransform: "uppercase",
+                borderBottom: `1px solid ${COLORS.cardBorder}`,
+                whiteSpace: "nowrap",
+              }}>
+                {coffee.region}
+              </td>
+              {coffee.scores.map((score, si) => (
+                <td
+                  key={si}
+                  style={{
+                    padding: "9px 10px",
+                    textAlign: "center",
+                    fontSize: 12,
+                    color: score >= 7 ? DIM_COLORS[si] : score >= 5 ? COLORS.label : COLORS.sub,
+                    fontWeight: score >= 8 ? "bold" : "normal",
+                    borderBottom: `1px solid ${COLORS.cardBorder}`,
+                    opacity: score < 4 ? 0.5 : 1,
+                  }}
+                >
+                  {score}
+                </td>
+              ))}
+              <td style={{
+                padding: "9px 10px",
+                fontSize: 9.5, color: COLORS.sub,
+                fontStyle: "italic", letterSpacing: "0.03em",
+                borderBottom: `1px solid ${COLORS.cardBorder}`,
+              }}>
+                {coffee.note}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// ─── Methodology Modal ────────────────────────────────────────────────────────
+
+function MethodologyModal({ onClose }) {
+  return (
+    <>
+      <div
+        onClick={onClose}
+        style={{
+          position: "fixed", inset: 0,
+          zIndex: 400, background: "rgba(0,0,0,0.7)",
+        }}
+      />
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "fixed",
+          top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 401,
+          width: "min(600px, 92vw)",
+          maxHeight: "80vh",
+          overflowY: "auto",
+          background: "#1F1409",
+          border: `1px solid ${COLORS.gridOuter}`,
+          borderRadius: 10,
+          padding: "28px 28px 24px",
+          fontFamily: "Georgia, serif",
+          animation: "popoverIn 0.18s ease both",
+        }}
+      >
+        <div style={{
+          display: "flex", justifyContent: "space-between",
+          alignItems: "flex-start", marginBottom: 20,
+        }}>
+          <div>
+            <div style={{
+              fontSize: 9, letterSpacing: "0.3em", color: COLORS.sub,
+              textTransform: "uppercase", marginBottom: 6,
+            }}>
+              Scoring Methodology
+            </div>
+            <h2 style={{
+              margin: 0, fontSize: 18, fontWeight: "normal",
+              color: "#F0DEB8", letterSpacing: "0.04em",
+            }}>
+              How scores are assigned
+            </h2>
+          </div>
+          <button onClick={onClose} style={{
+            background: "none", border: "none", color: COLORS.sub,
+            fontSize: 20, cursor: "pointer", padding: "0 0 0 16px",
+            fontFamily: "Georgia, serif", lineHeight: 1, flexShrink: 0,
+          }}>×</button>
+        </div>
+
+        <p style={{
+          fontSize: 11, color: COLORS.label, lineHeight: 1.75,
+          letterSpacing: "0.02em", marginBottom: 20,
+        }}>
+          Each origin is scored 1–10 across six flavor dimensions based on
+          commonly cited tasting notes for that region at a{" "}
+          <em>light-to-medium roast level</em>. Scores represent illustrative
+          averages across the most typical varietals and processing methods for
+          each origin — individual lots vary significantly with altitude,
+          harvest year, and producer. Natural and honey-processed lots tend to
+          score higher on Fruity and Sweet; washed lots tend toward cleaner
+          Floral and brighter acidity.
+        </p>
+
+        <div style={{ width: "100%", height: 1, background: COLORS.cardBorder, marginBottom: 20 }} />
+
+        {DIMS.map((dim, i) => (
+          <div key={dim} style={{ marginBottom: 18 }}>
+            <div style={{
+              display: "flex", alignItems: "center", gap: 8, marginBottom: 6,
+            }}>
+              <div style={{
+                width: 7, height: 7, borderRadius: "50%",
+                background: DIM_COLORS[i], flexShrink: 0,
+              }} />
+              <span style={{
+                fontSize: 10.5, color: DIM_COLORS[i],
+                letterSpacing: "0.14em", textTransform: "uppercase",
+              }}>
+                {dim}
+              </span>
+              <span style={{
+                fontSize: 9, color: COLORS.sub, fontStyle: "italic",
+              }}>
+                — {DIM_DESCS[i]}
+              </span>
+            </div>
+            <p style={{
+              margin: 0, marginLeft: 15,
+              fontSize: 10.5, color: COLORS.sub, lineHeight: 1.7,
+              letterSpacing: "0.02em",
+            }}>
+              {[
+                "Presence of berry, citrus, stone fruit, or tropical notes. High scores are typical of high-altitude East African and some Central American origins. Natural processing amplifies fruit intensity significantly.",
+                "Aromatic floral complexity: jasmine, rose, bergamot, herbal. Scores above 8 are rare and almost exclusively associated with Geisha varietals or washed Ethiopian Yirgacheffe lots.",
+                "Perceived sweetness and body: caramel, honey, sugar, chocolate. Not added sugar — sweetness inherent in the bean. Natural-process and honey-process coffees score highest. Strongly correlated with full body.",
+                "Nut and cocoa character: hazelnut, almond, walnut, dark chocolate. Most prominent in Brazilian, Colombian, and low-altitude Central American origins, especially at medium roast.",
+                "Spice and aromatic warmth: pepper, cardamom, clove, cinnamon. Scores above 6 are primarily found in Yemeni and Indian origins. Often present as a background note in many others.",
+                "Terroir-driven characteristics: cedar, tobacco, wet soil, mushroom. Highest in Indonesian origins processed by wet-hulling (giling basah). Low scores indicate clean, terroir-neutral cups.",
+              ][i]}
+            </p>
+          </div>
+        ))}
+
+        <div style={{ width: "100%", height: 1, background: COLORS.cardBorder, margin: "20px 0 16px" }} />
+        <p style={{
+          margin: 0, fontSize: 9.5, color: "#3A2A14",
+          letterSpacing: "0.1em", fontStyle: "italic", textAlign: "center",
+        }}>
+          Scores are illustrative and educational — not the result of controlled sensory analysis.
+        </p>
+      </div>
+    </>
+  );
+}
+
 // ─── Root Component ───────────────────────────────────────────────────────────
 
 export default function CoffeeInfographic() {
   const [sortDim, setSortDim] = useState(null);
   const [sortDir, setSortDir] = useState("desc");
   const [view, setView] = useState("cards");
+  const [showMethodology, setShowMethodology] = useState(false);
   // { coffeeName: string, dimIndex: number } | null
   const [activePopover, setActivePopover] = useState(null);
 
@@ -933,6 +1152,7 @@ export default function CoffeeInfographic() {
         );
 
   return (
+    <>
     <div
       style={{
         minHeight: "100vh",
@@ -1022,12 +1242,40 @@ export default function CoffeeInfographic() {
             width: 56, height: 1, background: COLORS.gridOuter,
             margin: "18px auto", opacity: 0.7,
           }} />
-          <p style={{
-            fontSize: 12, color: COLORS.sub, margin: 0,
-            letterSpacing: "0.08em", fontStyle: "italic",
+          <div style={{
+            display: "flex", alignItems: "center",
+            justifyContent: "center", gap: 8,
           }}>
-            Flavor profiles across six dimensions · Light-to-medium roast reference
-          </p>
+            <p style={{
+              fontSize: 12, color: COLORS.sub, margin: 0,
+              letterSpacing: "0.08em", fontStyle: "italic",
+            }}>
+              Flavor profiles across six dimensions · Light-to-medium roast reference
+            </p>
+            <button
+              onClick={() => setShowMethodology(true)}
+              title="Scoring methodology"
+              style={{
+                background: "none", border: `1px solid ${COLORS.cardBorder}`,
+                borderRadius: "50%", width: 16, height: 16,
+                color: COLORS.sub, fontSize: 9, cursor: "pointer",
+                fontFamily: "Georgia, serif", lineHeight: 1,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0, transition: "border-color 0.2s, color 0.2s",
+                padding: 0,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = COLORS.gridOuter;
+                e.currentTarget.style.color = COLORS.label;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = COLORS.cardBorder;
+                e.currentTarget.style.color = COLORS.sub;
+              }}
+            >
+              i
+            </button>
+          </div>
 
           {/* Legend / sort controls */}
           <div style={{
@@ -1090,14 +1338,14 @@ export default function CoffeeInfographic() {
           display: "flex", justifyContent: "center", gap: 0,
           marginBottom: 24,
         }}>
-          {["cards", "heatmap", "tags"].map((v, idx) => (
+          {["cards", "heatmap", "tags", "data"].map((v, idx) => (
             <button
               key={v}
               onClick={() => setView(v)}
               style={{
                 background: "none",
                 border: `1px solid ${view === v ? COLORS.gridOuter : COLORS.cardBorder}`,
-                borderRadius: idx === 0 ? "4px 0 0 4px" : idx === 2 ? "0 4px 4px 0" : "0",
+                borderRadius: idx === 0 ? "4px 0 0 4px" : idx === 3 ? "0 4px 4px 0" : "0",
                 padding: "5px 18px",
                 color: view === v ? "#F0DEB8" : COLORS.sub,
                 fontSize: 10,
@@ -1147,6 +1395,16 @@ export default function CoffeeInfographic() {
         {/* Tag index */}
         {view === "tags" && <TagView />}
 
+        {/* Raw data */}
+        {view === "data" && (
+          <DataView
+            coffees={sortedCoffees}
+            sortDim={sortDim}
+            sortDir={sortDir}
+            onDimClick={handleDimClick}
+          />
+        )}
+
         {/* Footer */}
         <div style={{
           textAlign: "center", marginTop: 40,
@@ -1191,5 +1449,10 @@ export default function CoffeeInfographic() {
         </div>
       </div>
     </div>
+
+      {showMethodology && (
+        <MethodologyModal onClose={() => setShowMethodology(false)} />
+      )}
+    </>
   );
 }

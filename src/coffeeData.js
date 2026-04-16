@@ -362,4 +362,119 @@ export const coffees = [
       },
     ],
   },
+  {
+    name: "Panama Geisha",
+    region: "Central America",
+    scores: [7, 10, 8, 2, 2, 1],
+    note: "Jasmine · Bergamot · Peach Nectar",
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍊 Mandarin", "🍇 Tropical Fruit"],
+        note: "Geisha's fruit character is delicate and precise — stone fruit and citrus with tea-like clarity.",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌿 Bergamot", "🌹 Rose"],
+        note: "Panama Geisha defines the ceiling of floral intensity in specialty coffee, often described as perfumed.",
+      },
+      {
+        tags: ["🍯 Peach Nectar", "🌾 Honey", "🍬 Brown Sugar"],
+        note: "Exceptional sweetness and silky body justify Geisha's reputation as the world's most celebrated cup.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Burundian",
+    region: "East Africa",
+    scores: [8, 6, 7, 3, 3, 2],
+    note: "Blackcurrant · Rose · Honey",
+    highlights: [
+      {
+        tags: ["🍇 Blackcurrant", "🍒 Cherry", "🍊 Citrus"],
+        note: "Burundian washed coffees rival Kenya for vivid berry brightness and clean, complex acidity.",
+      },
+      {
+        tags: ["🌹 Rose", "🌸 Floral"],
+        note: "Subtle but present floral character complements the dominant fruit profile.",
+      },
+      {
+        tags: ["🍯 Honey", "🍮 Caramel", "🌾 Brown Sugar"],
+        note: "Balanced sweetness and a juicy, full body give Burundian coffee wide appeal.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Tanzanian",
+    region: "East Africa",
+    scores: [7, 4, 6, 3, 3, 3],
+    note: "Winey · Dark Plum · Black Tea",
+    highlights: [
+      {
+        tags: ["🍷 Winey", "🫐 Dark Berry", "🍑 Plum"],
+        note: "Tanzania Peaberry is prized for its intense wine-like fruitiness and deep berry complexity.",
+      },
+      null,
+      {
+        tags: ["🍵 Black Tea", "🟤 Brown Sugar"],
+        note: "A distinctive tea-like quality and mild sweetness give Tanzanian coffee an elegant, clean finish.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Honduran",
+    region: "Central America",
+    scores: [5, 3, 7, 6, 3, 3],
+    note: "Caramel · Peach · Almond",
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍊 Mild Citrus"],
+        note: "High-altitude Honduran farms produce clean, fruit-forward cups with bright but gentle acidity.",
+      },
+      null,
+      {
+        tags: ["🍮 Caramel", "🌾 Honey", "🟤 Brown Sugar"],
+        note: "Honduras is Central America's largest producer, known for consistently sweet, balanced cups.",
+      },
+      {
+        tags: ["🌰 Almond", "🥜 Mild Nut"],
+        note: "Understated nuttiness rounds out the accessible, crowd-pleasing Honduran profile.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Papua New Guinea",
+    region: "Pacific",
+    scores: [6, 3, 5, 5, 4, 7],
+    note: "Tropical Fruit · Earthy · Brown Sugar",
+    highlights: [
+      {
+        tags: ["🍍 Tropical Fruit", "🫐 Wild Berry"],
+        note: "PNG coffees are unpredictably fruity — grown on smallholder plots with wild, funky character.",
+      },
+      null,
+      {
+        tags: ["🟤 Brown Sugar", "🍮 Mild Caramel"],
+        note: "Moderate sweetness with a heavy, syrupy body typical of Pacific island origins.",
+      },
+      {
+        tags: ["🌰 Mild Nut", "🍫 Cocoa"],
+        note: "Cocoa and nut undertones ground the wilder fruit and earthy notes in the cup.",
+      },
+      null,
+      {
+        tags: ["🌍 Forest Floor", "🪵 Damp Wood", "🍄 Mushroom"],
+        note: "PNG's wet-hulled processing and humid growing conditions produce a distinctly earthy, wild terroir.",
+      },
+    ],
+  },
 ];
