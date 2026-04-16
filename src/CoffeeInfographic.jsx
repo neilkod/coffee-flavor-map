@@ -423,6 +423,99 @@ function CoffeeCard({ coffee, index, activePopoverDim, onDotClick, onClosePopove
   );
 }
 
+// ─── Tag Index (inverted: tag → coffees, grouped by dimension) ───────────────
+// Each entry: [ tag string, coffee[] ] sorted by number of coffees descending
+
+const TAG_INDEX = DIMS.map((_, dimIdx) => {
+  const map = new Map();
+  coffees.forEach((coffee) => {
+    const h = coffee.highlights[dimIdx];
+    if (!h) return;
+    h.tags.forEach((tag) => {
+      if (!map.has(tag)) map.set(tag, []);
+      map.get(tag).push(coffee);
+    });
+  });
+  return Array.from(map.entries()).sort((a, b) => b[1].length - a[1].length);
+});
+
+// ─── Tag View ─────────────────────────────────────────────────────────────────
+
+function TagView() {
+  return (
+    <div className="tag-grid">
+      {DIMS.map((dim, i) => (
+        <div
+          key={dim}
+          style={{
+            background: COLORS.cardBg,
+            border: `1px solid ${COLORS.cardBorder}`,
+            borderRadius: 8,
+            padding: "16px 16px 18px",
+          }}
+        >
+          {/* Section header */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 8,
+            marginBottom: 14, paddingBottom: 10,
+            borderBottom: `1px solid ${DIM_COLORS[i]}33`,
+          }}>
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%",
+              background: DIM_COLORS[i], flexShrink: 0,
+            }} />
+            <span style={{
+              fontSize: 11, color: DIM_COLORS[i],
+              letterSpacing: "0.18em", textTransform: "uppercase",
+            }}>
+              {dim}
+            </span>
+            <span style={{
+              fontSize: 9, color: COLORS.sub, fontStyle: "italic",
+              fontFamily: "Georgia, serif", marginLeft: "auto",
+              letterSpacing: "0.03em",
+            }}>
+              {DIM_DESCS[i]}
+            </span>
+          </div>
+
+          {/* Tag rows */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {TAG_INDEX[i].map(([tag, tagCoffees]) => (
+              <div key={tag}>
+                <div style={{
+                  fontSize: 10.5, color: DIM_COLORS[i],
+                  fontFamily: "Georgia, serif", letterSpacing: "0.04em",
+                  marginBottom: 5, opacity: 0.95,
+                }}>
+                  {tag}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                  {tagCoffees.map((c) => (
+                    <span key={c.name} style={{
+                      fontSize: 9.5,
+                      color: COLORS.label,
+                      background: `${DIM_COLORS[i]}18`,
+                      border: `1px solid ${DIM_COLORS[i]}33`,
+                      borderRadius: 12,
+                      padding: "2px 9px",
+                      fontFamily: "Georgia, serif",
+                      letterSpacing: "0.03em",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {c.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── Heatmap View ────────────────────────────────────────────────────────────
 
 function HeatmapTooltip({ coffee, dimIndex, anchorRect }) {
@@ -731,19 +824,19 @@ export default function CoffeeInfographic() {
         .radar-dot-group:hover .radar-dot {
           filter: brightness(1.25);
         }
-        .coffee-grid {
+        .coffee-grid, .tag-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
           transition: opacity 0.15s ease;
         }
         @media (max-width: 700px) {
-          .coffee-grid {
+          .coffee-grid, .tag-grid {
             grid-template-columns: 1fr;
           }
         }
         @media (min-width: 701px) and (max-width: 960px) {
-          .coffee-grid {
+          .coffee-grid, .tag-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
@@ -845,14 +938,14 @@ export default function CoffeeInfographic() {
           display: "flex", justifyContent: "center", gap: 0,
           marginBottom: 24,
         }}>
-          {["cards", "heatmap"].map((v) => (
+          {["cards", "heatmap", "tags"].map((v, idx) => (
             <button
               key={v}
               onClick={() => setView(v)}
               style={{
                 background: "none",
                 border: `1px solid ${view === v ? COLORS.gridOuter : COLORS.cardBorder}`,
-                borderRadius: v === "cards" ? "4px 0 0 4px" : "0 4px 4px 0",
+                borderRadius: idx === 0 ? "4px 0 0 4px" : idx === 2 ? "0 4px 4px 0" : "0",
                 padding: "5px 18px",
                 color: view === v ? "#F0DEB8" : COLORS.sub,
                 fontSize: 10,
@@ -861,6 +954,7 @@ export default function CoffeeInfographic() {
                 cursor: "pointer",
                 fontFamily: "Georgia, serif",
                 transition: "all 0.2s",
+                marginLeft: idx === 0 ? 0 : -1,
               }}
             >
               {v}
@@ -897,6 +991,9 @@ export default function CoffeeInfographic() {
             onDimClick={handleDimClick}
           />
         )}
+
+        {/* Tag index */}
+        {view === "tags" && <TagView />}
 
         {/* Footer */}
         <div style={{
