@@ -23,7 +23,7 @@ An index of every flavor tag used across the dataset, organized by dimension. Al
 A recommendation engine. Select one or more flavor tags (e.g. "Jasmine", "Dark Chocolate", "Earthy") and the view returns all matching origins ranked by how closely their tasting notes match your selection. Each result shows a mini radar and a match percentage bar.
 
 ### Flavor Map
-A PCA (Principal Component Analysis) scatter plot that reduces the six-dimensional flavor space down to two axes and plots all 20 origins in it. Origins that cluster together have similar flavor profiles; outliers are genuinely unique. Points are colored by processing method. Hover a point to dim the rest and see the origin name — click to open the full detail view.
+A PCA (Principal Component Analysis) scatter plot that reduces the six-dimensional flavor space down to two axes and plots all 20 origins in it. Origins that cluster together have similar flavor profiles; outliers are genuinely unique. Points are colored by each coffee's dominant flavor dimension. A `?` toggle explains the chart in plain English for readers unfamiliar with PCA.
 
 The two axes are derived automatically from the data: the labels (shown on each axis) reflect which flavor dimensions contribute most to the variance captured by that component.
 
@@ -109,7 +109,7 @@ Scores and tasting notes were derived from a synthesis of:
 
 ## Tech stack
 
-- **React 18** + **Vite 8** — component UI and bundler
+- **React 19** + **Vite 8** — component UI and bundler
 - **No CSS framework** — all styles are inline React style objects
 - **No charting library** — radar charts and scatter plots are hand-drawn SVG
 - **PCA implementation** — covariance matrix + power iteration, ~30 lines of plain JS, computed once at module load
