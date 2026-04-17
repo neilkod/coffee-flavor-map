@@ -829,6 +829,7 @@ function HeatmapTooltip({ coffee, dimIndex, anchorRect }) {
         top,
         left,
         width: TOOLTIP_WIDTH,
+        boxSizing: "border-box",
         zIndex: 200,
         background: "#1F1409",
         border: `1px solid ${color}99`,
