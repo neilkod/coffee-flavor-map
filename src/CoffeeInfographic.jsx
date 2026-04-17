@@ -2048,56 +2048,31 @@ export default function CoffeeInfographic() {
         </div>
 
         {/* View toggle */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginBottom: 24 }}>
-          {/* Primary views */}
-          <div style={{ display: "flex", gap: 0 }}>
-            {["cards", "heatmap", "tags"].map((v, idx) => (
-              <button
-                key={v}
-                onClick={() => setView(v)}
-                style={{
-                  background: "none",
-                  border: `1px solid ${view === v ? COLORS.gridOuter : COLORS.cardBorder}`,
-                  borderRadius: idx === 0 ? "4px 0 0 4px" : idx === 2 ? "0 4px 4px 0" : "0",
-                  padding: "5px 18px",
-                  color: view === v ? "#F0DEB8" : COLORS.sub,
-                  fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase",
-                  cursor: "pointer", fontFamily: "Georgia, serif",
-                  transition: "all 0.2s", marginLeft: idx === 0 ? 0 : -1,
-                }}
-              >
-                {v}
-              </button>
-            ))}
-          </div>
-
-          {/* Explore views */}
-          <div style={{ display: "flex", gap: 0 }}>
-            {[
-              { key: "discover",   label: "✦ Discover" },
-              { key: "map",       label: "✦ Flavor Map" },
-            ].map(({ key, label }, idx) => {
-              const isActive = view === key;
-              return (
-                <button
-                  key={key}
-                  onClick={() => setView(key)}
-                  style={{
-                    background: isActive ? `${COLORS.gridOuter}20` : "none",
-                    border: `1px solid ${isActive ? COLORS.gridOuter : COLORS.cardBorder}`,
-                    borderRadius: idx === 0 ? "4px 0 0 4px" : "0 4px 4px 0",
-                    padding: "4px 16px",
-                    color: isActive ? COLORS.label : COLORS.sub,
-                    fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-                    cursor: "pointer", fontFamily: "Georgia, serif",
-                    transition: "all 0.2s", marginLeft: idx === 0 ? 0 : -1,
-                  }}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+          {[
+            { key: "cards",    label: "Cards" },
+            { key: "heatmap",  label: "Heatmap" },
+            { key: "tags",     label: "Tags" },
+            { key: "discover", label: "Discover" },
+            { key: "map",      label: "Flavor Map" },
+          ].map(({ key, label }, idx, arr) => (
+            <button
+              key={key}
+              onClick={() => setView(key)}
+              style={{
+                background: "none",
+                border: `1px solid ${view === key ? COLORS.gridOuter : COLORS.cardBorder}`,
+                borderRadius: idx === 0 ? "4px 0 0 4px" : idx === arr.length - 1 ? "0 4px 4px 0" : "0",
+                padding: "5px 18px",
+                color: view === key ? "#F0DEB8" : COLORS.sub,
+                fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase",
+                cursor: "pointer", fontFamily: "Georgia, serif",
+                transition: "all 0.2s", marginLeft: idx === 0 ? 0 : -1,
+              }}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* Cards grid */}
