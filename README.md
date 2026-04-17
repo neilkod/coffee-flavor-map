@@ -1,6 +1,6 @@
 # Coffees of the World
 
-An interactive flavor infographic comparing 20 single-origin coffees across six sensory dimensions. Built with React + Vite, deployed as a static site on Vercel.
+An interactive flavor infographic comparing 27 single-origin coffees across six sensory dimensions. Built with React + Vite, deployed as a static site on Vercel.
 
 **Live site:** [tastingterrain.com](https://tastingterrain.com)
 
@@ -32,7 +32,7 @@ The two axes are derived automatically from the data: the labels (shown on each 
 ## The dataset
 
 ### Origins
-20 single-origin coffees are included:
+27 single-origin coffees are included:
 
 | Origin | Region | Process | Roast |
 |--------|--------|---------|-------|
@@ -56,6 +56,13 @@ The two axes are derived automatically from the data: the labels (shown on each 
 | Tanzanian | East Africa | Washed | Light–Medium |
 | Honduran | Central America | Washed | Medium |
 | Papua New Guinea | Pacific | Washed | Medium |
+| Ethiopian Harrar | East Africa | Natural | Light–Medium |
+| Sulawesi Toraja | Indonesia | Wet-Hulled | Medium–Dark |
+| Bolivian | South America | Washed | Light |
+| Salvadoran Pacamara | Central America | Washed | Light–Medium |
+| Congolese Kivu | Central Africa | Washed | Medium |
+| St. Helena | South Atlantic Island | Washed | Light–Medium |
+| Filipino Barako | Southeast Asia | Natural | Medium–Dark |
 
 ### Flavor dimensions
 Every origin is scored 1–10 across six dimensions:

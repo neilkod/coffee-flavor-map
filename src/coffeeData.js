@@ -540,4 +540,210 @@ export const coffees = [
       },
     ],
   },
+  {
+    name: "Ethiopian Harrar",
+    region: "East Africa",
+    scores: [9, 4, 7, 2, 3, 3],
+    note: "Blueberry Jam · Dark Winey Fruit · Tamarind",
+    roast: "Light–Medium",
+    process: "Natural",
+    brewMethods: ["Pour Over", "French Press", "AeroPress", "Cold Brew"],
+    highlights: [
+      {
+        tags: ["🫐 Blueberry Jam", "🍇 Winey Dark Fruit", "🍒 Black Cherry"],
+        note: "Ethiopia's eastern Harrar highlands (1,400–2,100 MASL) produce the most intense wild blueberry and dark-fruit profile in coffee. Dry-processed on rooftops and raised beds using ancient Longberry and Shortberry heirloom varieties, Harrar's fruit is feral compared to the clean washed Yirgacheffe — more concentrated, more ferment-forward, and unmistakably wild.",
+      },
+      {
+        tags: ["🌸 Dried Rose", "🌿 Dried Herb"],
+        note: "A darker, more complex floral quality than Yirgacheffe — dried rose and aromatic herb rather than jasmine brightness. These emerge as the cup cools and reflect the ancient heirloom genetics that have grown in Harrar's dry eastern plateau for centuries without introduction of modern varietals.",
+      },
+      {
+        tags: ["🍷 Tamarind", "🍫 Dark Fruit Compote", "🍯 Molasses"],
+        note: "Harrar naturals achieve a near-wine sweetness from the dry-process method — tamarind, molasses, and dark fruit compote. Sweet Maria's describes top Harrar lots as 'hedonistic overload of blueberry, wine, and dark sugar' — a sweetness defined by fermented complexity rather than clean caramel.",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Sulawesi Toraja",
+    region: "Indonesia",
+    scores: [5, 2, 6, 5, 5, 8],
+    note: "Dark Chocolate · Black Cherry · Pipe Tobacco",
+    roast: "Medium–Dark",
+    process: "Wet-Hulled",
+    brewMethods: ["French Press", "Drip", "Espresso", "Moka Pot"],
+    highlights: [
+      {
+        tags: ["🍒 Black Cherry", "🍇 Dark Plum", "🍑 Dried Stone Fruit"],
+        note: "Toraja — grown on Sulawesi's central highlands (1,400–2,000 MASL) — has more fruit presence than Sumatran wet-hulled lots. Dark cherry and dried plum emerge clearly beneath the chocolate and earth, a product of the less extreme wet-hull conditions compared to Aceh/Gayo. The Toarco Estate (managed by Japan's Key Coffee since 1976) is the benchmark for consistency.",
+      },
+      null,
+      {
+        tags: ["🍫 Dark Chocolate", "🟤 Brown Sugar", "🍮 Rustic Caramel"],
+        note: "Toraja's more accessible dark chocolate sweetness — less pungent than Sumatra, with a rustic caramel note — makes it a prized espresso blend component. Genuine Origin describes their Sulawesi Toraja G1 as 'dark chocolate and brown sugar with a syrupy mouthfeel,' the more refined face of Indonesian wet-hulled coffee.",
+      },
+      {
+        tags: ["🪵 Cedar", "🌰 Cocoa Nib"],
+        note: "A cedar and cocoa-nib nuttiness from the S795 cultivar grown at Toarco — one of Indonesia's few estate-managed wet-hull operations. The consistency of estate processing produces a cleaner nut character than most smallholder Sulawesi lots.",
+      },
+      {
+        tags: ["🌶️ Black Pepper", "🍂 Tobacco"],
+        note: "Black pepper and pipe tobacco spice — more restrained than Indian Monsoon or Yemeni but adding savory complexity to the dominant earth-and-chocolate profile. Sweet Maria's describes this as 'a tobacco and dark fruit interplay unique to Toraja' that sets it apart from Sumatran lots.",
+      },
+      {
+        tags: ["🌍 Forest Floor", "🪵 Mulch", "🍄 Damp Earth"],
+        note: "Sulawesi's earthy profile is notable but gentler than Sumatran — the Giling Basah process is applied somewhat earlier here, producing less of Sumatra's extreme peat/mold depth and more of a forest-floor and damp mulch character with better definition.",
+      },
+    ],
+  },
+  {
+    name: "Bolivian",
+    region: "South America",
+    scores: [7, 6, 8, 4, 2, 1],
+    note: "Crisp Apple · Orange Blossom · Honey Caramel",
+    roast: "Light",
+    process: "Washed",
+    brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    highlights: [
+      {
+        tags: ["🍎 Crisp Apple", "🍊 Blood Orange", "🍑 White Peach"],
+        note: "Bolivia's Yungas region — particularly Caranavi farms at 1,800–2,400 MASL, among the world's highest-grown coffees — produces a clean, precise stone-fruit brightness. The extreme altitude forces slow cherry development, concentrating sugars into white peach and blood orange clarity. Cup of Excellence Bolivia lots regularly earn 88–93 points with notes of 'apple, peach, and citrus.'",
+      },
+      {
+        tags: ["🌸 Orange Blossom", "🌸 Jasmine", "🌿 Chamomile"],
+        note: "Bolivian Typica and Caturra at altitude develop delicate florals — orange blossom and jasmine in the cup, chamomile in the aroma. Bolivia's remoteness (no paved roads to many Caranavi farms) keeps it off most commercial radars, making it specialty coffee's best-kept secret and one of the most rewarding origins to discover.",
+      },
+      {
+        tags: ["🍯 Honey", "🍮 Caramel", "🟤 Brown Sugar"],
+        note: "Exceptional sugar development from the extreme altitude and careful hand-picking (farm sizes average under 3 hectares) produces a sweetness that grows richer as the cup cools. Sweet Maria's consistently praises Bolivian washed lots for 'honey and caramel that intensify with cooling — a sign of dense, well-developed cherry sugars.'",
+      },
+      {
+        tags: ["🌰 Almond", "🍫 Light Cocoa"],
+        note: "A gentle almond and light cocoa undertone from Typica genetics — delicate enough to support rather than dominate the fruit and floral foundation. Present as a clean finish without the bold nut character of Brazilian or Guatemalan.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Salvadoran Pacamara",
+    region: "Central America",
+    scores: [7, 6, 8, 4, 2, 1],
+    note: "Red Cherry · Floral Nougat · Brown Sugar",
+    roast: "Light–Medium",
+    process: "Washed",
+    brewMethods: ["Pour Over", "AeroPress", "Chemex", "Espresso"],
+    highlights: [
+      {
+        tags: ["🍒 Red Cherry", "🍑 Peach", "🍊 Mandarin"],
+        note: "Pacamara — a cross between Pacas and the giant-beaned Maragogipe, developed by El Salvador's coffee institute in 1958 — produces oversized beans that develop unusually expressive red cherry and tropical fruit clarity. Apaneca-Ilamatepec farms at 1,200–1,800 MASL in volcanic soil concentrate this into mandarin and peach notes; Cup of Excellence El Salvador lots regularly score 91–95.",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌸 Magnolia"],
+        note: "The large Pacamara bean develops a notable jasmine and magnolia floral note at light roast — more pronounced than other Central American origins and considered one of Pacamara's signature varietal characteristics. This distinguishes Salvadoran specialty lots from the cleaner-but-quieter profiles of Honduras and Guatemala.",
+      },
+      {
+        tags: ["🟤 Brown Sugar", "🍮 Nougat", "🍯 Honey"],
+        note: "Pacamara's oversized bean structure concentrates sweetness in a way no other Central American varietal matches — brown sugar, nougat, and an almost chewy honey body. This is El Salvador's calling card in specialty coffee, and the reason Pacamara commands premium prices despite the country's limited total production.",
+      },
+      {
+        tags: ["🌰 Almond", "🍫 Milk Chocolate"],
+        note: "A light almond and milk chocolate finish from the Maragogipe parent's genetics — understated enough to let the fruit and sugar shine, but persistent through the finish as the cup cools.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Congolese Kivu",
+    region: "Central Africa",
+    scores: [7, 4, 6, 3, 2, 4],
+    note: "Dark Cherry · Sweet Orange · Milk Chocolate",
+    roast: "Medium",
+    process: "Washed",
+    brewMethods: ["Pour Over", "French Press", "Drip", "AeroPress"],
+    highlights: [
+      {
+        tags: ["🍒 Dark Cherry", "🍊 Sweet Orange", "🍇 Blackcurrant"],
+        note: "North and South Kivu provinces — on the volcanic shores of Lake Kivu at 1,460–2,000 MASL — produce coffees with a distinct dark cherry and sweet orange profile. The SOPACDI cooperative (Solidarité Paysanne pour la Promotion des Actions Café et Thé) has produced traceable washed lots earning 85–90 Coffee Review scores — remarkable given the logistical challenges of exporting from eastern DRC.",
+      },
+      null,
+      {
+        tags: ["🍫 Milk Chocolate", "🍯 Orange Honey", "🟤 Brown Sugar"],
+        note: "Kivu's washed lots develop a solid milk chocolate and honey sweetness from high-altitude slow ripening on mineral-rich volcanic soil. The profile sits between Rwandan brightness and Congolese body — Virunga Coffee describes their Kivu lots as 'a fruit-forward African profile grounded by chocolate depth unlike its East African neighbors.'",
+      },
+      null,
+      null,
+      {
+        tags: ["🌍 Volcanic Mineral", "🪵 Light Forest Floor"],
+        note: "A mild but distinctive mineral earthiness from Kivu's dense highland forests — enough to add terroir character without the aggressive tobacco/peat of Indonesian origins. The volcanic basalt soils around Lake Kivu contribute a subtle mineral quality found in no other African origin.",
+      },
+    ],
+  },
+  {
+    name: "St. Helena",
+    region: "South Atlantic Island",
+    scores: [6, 6, 7, 4, 2, 2],
+    note: "Citrus Zest · Caramel · Chamomile",
+    roast: "Light–Medium",
+    process: "Washed",
+    brewMethods: ["Pour Over", "Chemex", "AeroPress", "French Press"],
+    highlights: [
+      {
+        tags: ["🍋 Citrus Zest", "🍊 Blood Orange", "🍑 Apricot"],
+        note: "St. Helena's Green Tipped Bourbon — descended directly from Yemeni coffee stock planted on this remote South Atlantic island in 1733 — produces a clean, citrus-bright cup. The island's constant trade winds and volcanic soil create a microclimate found nowhere else. The East India Company, which manages much of the island's ~25-acre coffee crop, describes it as 'bright citrus, stone fruit, silky body with remarkable balance.'",
+      },
+      {
+        tags: ["🌿 Chamomile", "🌸 Dried Rose", "🌿 Sweet Herb"],
+        note: "A delicate herbal-floral quality unique to the St. Helena Green Tipped Bourbon — chamomile, dried rose, and sweet herbs that reflect this varietal's undiluted Yemeni ancestry. No modern varietals have been introduced since 1733, making St. Helena one of the last 'living heirlooms' in all of specialty coffee. Napoleon Bonaparte, exiled here from 1815 until his death in 1821, reportedly requested this coffee daily.",
+      },
+      {
+        tags: ["🍮 Caramel", "🟤 Brown Sugar", "🍫 Milk Chocolate"],
+        note: "A clean, well-developed caramel sweetness from meticulous small-batch processing — the entire island produces fewer than 1,000 bags per year. This tiny scale forces careful hand-picking and individual lot attention that results in a remarkably consistent sweetness and one of the rarest cups in specialty coffee.",
+      },
+      {
+        tags: ["🌰 Walnut", "🍫 Cocoa"],
+        note: "A light walnut and cocoa note from the centuries-old Green Tipped Bourbon varietal — unmodified since the 18th century and grown in complete isolation. The nut character adds structure to what is otherwise a delicate, floral-bright profile.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Filipino Barako",
+    region: "Southeast Asia",
+    scores: [5, 6, 4, 5, 7, 8],
+    note: "Jackfruit · Smoky Dark Chocolate · Dark Floral",
+    roast: "Medium–Dark",
+    process: "Natural",
+    brewMethods: ["French Press", "Moka Pot", "Espresso", "Phin Filter"],
+    highlights: [
+      {
+        tags: ["🍈 Jackfruit", "🍊 Bitter Orange", "🍇 Dark Berry"],
+        note: "Filipino Barako (Coffea liberica var. liberica) is not Arabica — it's a separate species grown in Batangas and Cavite provinces. Its signature jackfruit and bitter orange notes have no analogue in any Arabica or Robusta origin. Bo's Coffee describes the aroma as 'bold and pungent, with a distinctive jackfruit character that announces itself immediately.' The large, asymmetric Liberica beans produce a cup that is genuinely unlike anything else on this site.",
+      },
+      {
+        tags: ["💐 Dark Floral", "🌹 Dried Rose", "🪵 Woody Incense"],
+        note: "Barako's floral character is smoky and dark — dried rose, incense, and wood smoke rather than the bright jasmine or orange blossom of Arabica. This is a defining Liberica trait: aromatics that bloom intensely but carry an earthy, resinous quality. The word 'Barako' derives from the Tagalog for 'wild boar' — a fitting description for a coffee this bold and untamed.",
+      },
+      {
+        tags: ["🍫 Bittersweet Chocolate", "🍮 Dark Sugar"],
+        note: "A bold, bittersweet sweetness beneath the jackfruit character — dark sugar and bittersweet chocolate that pair with the unusual fruit notes. Barako was the dominant coffee in the Philippines during its golden age as the world's 4th-largest producer in the 1880s; a coffee rust outbreak in the 1890s nearly wiped it out, and it survives today as a beloved cultural icon in Batangas province.",
+      },
+      {
+        tags: ["🥜 Roasted Peanut", "🍫 Dark Cocoa"],
+        note: "A bold roasted-peanut and dark cocoa nuttiness from the Liberica species' dense bean structure — heavier and more assertive than any Arabica nutty note. This character holds up under sweetened condensed milk, which is how Barako has been traditionally drunk for generations.",
+      },
+      {
+        tags: ["🌶️ Black Pepper", "🪵 Resinous Wood", "🍂 Clove"],
+        note: "A bold spice profile — black pepper, resinous wood, and clove — that's more intense than most Arabica origins. The Liberica species carries a naturally peppery character amplified by the natural process and medium-dark roast traditional in Batangas.",
+      },
+      {
+        tags: ["🪵 Smoky Wood", "🌍 Dense Earth", "🍄 Mushroom"],
+        note: "Barako's earthy profile is deep and resinous — smoky wood, dense earth, and a faint mushroom note unique to the Liberica species' cellular structure. It is the most unusual earthy character on this site, and arguably in all commercially available coffee. The Teofilo Coffee Company calls it 'a terroir experience unlike any Arabica — raw, bold, and irreplaceable.'",
+      },
+    ],
+  },
 ];
