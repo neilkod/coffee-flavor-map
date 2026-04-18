@@ -1828,6 +1828,7 @@ export default function CoffeeInfographic() {
   const [view, setView] = useState("cards");
   const [showMethodology, setShowMethodology] = useState(false);
   const [selectedCoffee, setSelectedCoffee] = useState(null);
+  const [brewFilter, setBrewFilter] = useState(new Set());
   // { coffeeName: string, dimIndex: number } | null
   const [activePopover, setActivePopover] = useState(null);
 
@@ -1869,6 +1870,18 @@ export default function CoffeeInfographic() {
             ? b.scores[sortDim] - a.scores[sortDim]
             : a.scores[sortDim] - b.scores[sortDim]
         );
+
+  const filteredCoffees = brewFilter.size === 0
+    ? sortedCoffees
+    : sortedCoffees.filter(c => c.brewMethods.some(m => brewFilter.has(m)));
+
+  function toggleBrew(method) {
+    setBrewFilter(prev => {
+      const next = new Set(prev);
+      next.has(method) ? next.delete(method) : next.add(method);
+      return next;
+    });
+  }
 
   return (
     <>
@@ -2093,10 +2106,71 @@ export default function CoffeeInfographic() {
           ))}
         </div>
 
+        {/* Brew method filter */}
+        {view === "cards" && (
+          <div style={{ marginBottom: 20 }}>
+            <div style={{
+              display: "flex", flexWrap: "wrap", alignItems: "center",
+              gap: 6, justifyContent: "center",
+            }}>
+              <span style={{
+                fontSize: 9, color: COLORS.sub, letterSpacing: "0.14em",
+                textTransform: "uppercase", fontFamily: "Georgia, serif",
+                marginRight: 2, flexShrink: 0,
+              }}>
+                Brew Method
+              </span>
+              {["Pour Over","Chemex","AeroPress","French Press","Drip","Espresso","Cold Brew","Moka Pot","Ibrik / Turkish","Phin Filter"].map(method => {
+                const active = brewFilter.has(method);
+                return (
+                  <button
+                    key={method}
+                    onClick={() => toggleBrew(method)}
+                    style={{
+                      fontSize: 9, fontFamily: "Georgia, serif",
+                      letterSpacing: "0.06em",
+                      padding: "3px 10px", borderRadius: 12,
+                      border: `1px solid ${active ? COLORS.gridOuter : COLORS.cardBorder}`,
+                      background: active ? `${COLORS.gridOuter}22` : "transparent",
+                      color: active ? "#F0DEB8" : COLORS.sub,
+                      cursor: "pointer", transition: "all 0.15s",
+                    }}
+                  >
+                    {method}
+                  </button>
+                );
+              })}
+              {brewFilter.size > 0 && (
+                <button
+                  onClick={() => setBrewFilter(new Set())}
+                  style={{
+                    fontSize: 9, fontFamily: "Georgia, serif",
+                    letterSpacing: "0.06em", padding: "3px 10px",
+                    borderRadius: 12, border: `1px solid ${COLORS.cardBorder}`,
+                    background: "transparent", color: COLORS.sub,
+                    cursor: "pointer", opacity: 0.6,
+                  }}
+                >
+                  clear
+                </button>
+              )}
+            </div>
+            {brewFilter.size > 0 && (
+              <div style={{
+                textAlign: "center", marginTop: 8,
+                fontSize: 9, color: COLORS.sub,
+                fontFamily: "Georgia, serif", fontStyle: "italic",
+              }}>
+                {filteredCoffees.length} of {coffees.length} origins
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Cards grid */}
         {view === "cards" && (
           <div className="coffee-grid">
-            {sortedCoffees.map((coffee, i) => (
+            {filteredCoffees.map((coffee, i) => (
               <CoffeeCard
                 key={coffee.name}
                 coffee={coffee}
