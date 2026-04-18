@@ -471,7 +471,8 @@ const TAG_INDEX = DIMS.map((_, dimIdx) => {
       map.get(tag).push(coffee);
     });
   });
-  return Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+  const stripEmoji = (s) => s.replace(/^\S+\s/, "");
+  return Array.from(map.entries()).sort((a, b) => stripEmoji(a[0]).localeCompare(stripEmoji(b[0])));
 });
 
 // Process index: process method → coffees[]
