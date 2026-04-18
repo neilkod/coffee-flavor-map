@@ -1958,7 +1958,7 @@ function CompareRadar({ scoresA, scoresB, colorA, colorB, size = 220 }) {
   const dimLabelPos = DIMS.map((_, i) => toXY((2 * Math.PI * i) / NUM, R + 14));
   const dimTickPos  = DIMS.map((_, i) => toXY((2 * Math.PI * i) / NUM, R));
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} style={{ overflow: "visible" }}>
+    <svg viewBox={`0 0 ${size} ${size}`} style={{ overflow: "visible", width: "min(220px, 80vw)", height: "auto" }}>
       <defs>
         <filter id="cmp-glow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
@@ -2052,7 +2052,7 @@ function ComparisonModal({ coffees: pair, onClose }) {
                 <div style={{ fontSize: 9, color: DIM_COLORS[i], letterSpacing: "0.08em", marginBottom: 3 }}>{dim}</div>
                 {[a, b].map((c, idx) => (
                   <div key={c.name} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
-                    <div style={{ width: 90, fontSize: 8.5, color: COMPARE_COLORS[idx], fontFamily: "Georgia, serif", textAlign: "right", flexShrink: 0 }}>
+                    <div className="compare-score-label" style={{ width: 90, fontSize: 8.5, color: COMPARE_COLORS[idx], fontFamily: "Georgia, serif", textAlign: "right", flexShrink: 0 }}>
                       {c.name.split(" ")[0]}
                     </div>
                     <div style={{ flex: 1, height: 4, background: "#2A1A08", borderRadius: 3, overflow: "hidden" }}>
@@ -2069,10 +2069,7 @@ function ComparisonModal({ coffees: pair, onClose }) {
           </div>
 
           {/* Side-by-side info */}
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr",
-            borderTop: `1px solid ${COLORS.cardBorder}`,
-          }}>
+          <div className="compare-info-grid" style={{ borderTop: `1px solid ${COLORS.cardBorder}` }}>
             {[a, b].map((c, idx) => (
               <div key={c.name} style={{
                 padding: "16px 20px",
@@ -2247,6 +2244,22 @@ export default function CoffeeInfographic() {
             flex: 1 1 100%;
             border-right: none;
             border-bottom: 1px solid ${COLORS.cardBorder};
+          }
+        }
+        .compare-info-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 560px) {
+          .compare-info-grid {
+            grid-template-columns: 1fr;
+          }
+          .compare-info-grid > div:first-child {
+            border-right: none !important;
+            border-bottom: 1px solid ${COLORS.cardBorder};
+          }
+          .compare-score-label {
+            width: 70px !important;
           }
         }
       `}</style>
