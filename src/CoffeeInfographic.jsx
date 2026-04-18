@@ -1984,7 +1984,7 @@ function CompareView() {
   const b = coffees.find(c => c.name === nameB);
 
   const selectStyle = {
-    appearance: "none", WebkitAppearance: "none",
+    appearance: "none", WebkitAppearance: "none", MozAppearance: "none",
     background: COLORS.cardBg, border: `1px solid ${COLORS.cardBorder}`,
     borderRadius: 6, color: COLORS.label, fontSize: 13,
     fontFamily: "Georgia, serif", padding: "5px 28px 5px 10px", cursor: "pointer",
