@@ -8,10 +8,10 @@ An interactive flavor infographic comparing 32 single-origin coffees across six 
 
 ## What it does
 
-### Cards
-The default view. Each coffee origin is shown as a card with a radar chart visualizing its six-dimension flavor profile. Click a dimension dot to reveal curated tasting notes — specific cultivars, altitudes, processing stations, and flavor science behind that score. Click anywhere on the card to open a full detail view with roast level, processing method, and recommended brew methods.
+### Origins
+The default view. Each coffee origin is shown as a card with a radar chart visualizing its six-dimension flavor profile. Click a dimension dot to reveal curated tasting notes — specific cultivars, altitudes, processing stations, and flavor science behind that score. Click anywhere on the card to open a full detail view with roast level, processing method, and recommended brew methods. The detail view also shows a **Similar Origins** section — the three closest coffees by Euclidean distance across all six flavor dimensions.
 
-Cards can be sorted by any flavor dimension using the legend at the top of the page.
+Cards can be filtered by brew method and roast level (multi-select chips, stackable) and sorted by any flavor dimension using the legend at the top of the page.
 
 ### Heatmap
 A grid view of all 20 origins scored across all six dimensions simultaneously. Useful for comparing origins side-by-side or spotting which coffees lead in a particular dimension. Click any score cell to see the same flavor notes as the card dots. The column headers are clickable chips — hover to see a mini radar for that origin.
@@ -21,6 +21,9 @@ An index of every flavor tag used across the dataset, organized by dimension. Al
 
 ### Discover
 A recommendation engine. Select one or more flavor tags (e.g. "Jasmine", "Dark Chocolate", "Earthy") and the view returns all matching origins ranked by how closely their tasting notes match your selection. Each result shows a mini radar and a match percentage bar.
+
+### Compare
+A dedicated comparison view. Select any two origins from alpha-sorted dropdowns and instantly see an overlaid dual radar chart, a side-by-side score bar for each flavor dimension, and info panels showing each origin's region, roast, and processing method. Designed to encourage exploration across all 32 origins.
 
 ### Flavor Map
 A PCA (Principal Component Analysis) scatter plot that reduces the six-dimensional flavor space down to two axes and plots all 20 origins in it. Origins that cluster together have similar flavor profiles; outliers are genuinely unique. Points are colored by each coffee's dominant flavor dimension. A `?` toggle explains the chart in plain English for readers unfamiliar with PCA.
