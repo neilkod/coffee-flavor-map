@@ -1988,7 +1988,7 @@ function CompareView() {
     background: COLORS.cardBg, border: `1px solid ${COLORS.cardBorder}`,
     borderRadius: 6, color: COLORS.label, fontSize: 13,
     fontFamily: "Georgia, serif", padding: "5px 28px 5px 10px", cursor: "pointer",
-    width: 240, boxSizing: "border-box",
+    boxSizing: "border-box",
     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23A08C6E'/%3E%3C/svg%3E")`,
     backgroundRepeat: "no-repeat", backgroundPosition: "right 10px center",
   };
@@ -1996,7 +1996,7 @@ function CompareView() {
   return (
     <div style={{ maxWidth: 760, margin: "0 auto" }}>
       {/* Dropdowns */}
-      <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 28 }}>
+      <div className="compare-selects" style={{ marginBottom: 28 }}>
         {[[nameA, setNameA, COMPARE_COLORS[0]], [nameB, setNameB, COMPARE_COLORS[1]]].map(([val, setter, color], idx) => (
           <div key={idx} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -2238,6 +2238,47 @@ export default function CoffeeInfographic() {
             width: 70px !important;
           }
         }
+        .nav-tabs {
+          display: flex;
+          justify-content: center;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          max-width: 100%;
+          padding-bottom: 2px;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        @media (max-width: 560px) {
+          .nav-tabs button {
+            padding: 5px 10px !important;
+            font-size: 8.5px !important;
+            letter-spacing: 0.1em !important;
+          }
+        }
+        .dim-legend {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 480px) {
+          .dim-legend {
+            gap: 10px;
+          }
+          .dim-legend > div {
+            min-width: 60px !important;
+          }
+        }
+        .compare-selects {
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .compare-selects select {
+          width: min(240px, 80vw);
+        }
       `}</style>
 
       {/* Background radial */}
@@ -2304,10 +2345,7 @@ export default function CoffeeInfographic() {
           </div>
 
           {/* Legend / sort controls */}
-          <div style={{
-            display: "flex", justifyContent: "center", gap: 20,
-            marginTop: 20, flexWrap: "wrap",
-          }}>
+          <div className="dim-legend" style={{ marginTop: 20 }}>
             {DIMS.map((d, i) => {
               const active = sortDim === i;
               const dimOpacity = active ? 1 : (sortDim === null ? 0.9 : 0.5);
@@ -2360,7 +2398,7 @@ export default function CoffeeInfographic() {
         </div>
 
         {/* View toggle */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+        <div className="nav-tabs" style={{ marginBottom: 24 }}>
           {[
             { key: "cards",    label: "Origins" },
             { key: "heatmap",  label: "Heatmap" },
