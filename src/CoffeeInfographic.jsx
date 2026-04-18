@@ -2386,7 +2386,7 @@ export default function CoffeeInfographic() {
         {/* View toggle */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
           {[
-            { key: "cards",    label: "Cards" },
+            { key: "cards",    label: "Origins" },
             { key: "heatmap",  label: "Heatmap" },
             { key: "tags",     label: "Tags" },
             { key: "discover", label: "Discover" },
