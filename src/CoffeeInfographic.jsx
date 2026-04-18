@@ -2401,11 +2401,11 @@ export default function CoffeeInfographic() {
         <div className="nav-tabs" style={{ marginBottom: 24 }}>
           {[
             { key: "cards",    label: "Origins" },
-            { key: "heatmap",  label: "Heatmap" },
-            { key: "tags",     label: "Tags" },
-            { key: "discover", label: "Discover" },
-            { key: "map",      label: "Flavor Map" },
             { key: "compare",  label: "Compare" },
+            { key: "heatmap",  label: "Heatmap" },
+            { key: "map",      label: "Flavor Map" },
+            { key: "discover", label: "Discover" },
+            { key: "tags",     label: "Tags" },
           ].map(({ key, label }, idx, arr) => (
             <button
               key={key}
