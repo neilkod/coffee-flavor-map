@@ -329,6 +329,14 @@ function PopoverContent({ dim, color, highlight, onClose }) {
 
 // ─── Process Badge ───────────────────────────────────────────────────────────
 
+const PROCESS_EXPLAINERS = {
+  "Washed": "The cherry skin and fruit pulp are removed before drying, then the bean is fermented in water tanks and thoroughly rinsed. This strips away most fruit sugars, producing a clean, transparent cup where terroir and varietal character shine through. The world's most common method.",
+  "Natural": "The whole cherry is dried intact on raised beds — sometimes for 4–6 weeks — allowing fruit sugars to slowly absorb into the bean. The result is a heavier body, lower acidity, and intense fruit character: think blueberry, wine, and dark berry. Unpredictable but often spectacular.",
+  "Honey": "The skin is removed but the sticky mucilage layer (the 'honey') is left on the bean during drying. The more mucilage retained, the sweeter and more fruit-forward the cup. Yellow Honey ≈ 50%, Red Honey ≈ 75%, Black Honey ≈ 100% mucilage remaining. Costa Rica perfected this method.",
+  "Wet-Hulled": "Unique to Indonesia (called Giling Basah). The parchment layer is removed while the bean is still at ~50% moisture — far earlier than any other method — then dried further. This fundamentally alters the bean's cellular structure, producing the characteristic low acidity, full body, and earthy, sometimes herbal depth that defines Sumatran and Sulawesi coffees.",
+  "Monsooned": "Unique to India's Malabar Coast. Green coffee is spread in open warehouses and exposed to humid monsoon winds for 12–16 weeks. The beans swell to nearly twice their size, absorb moisture, and lose almost all acidity. The process recreates what happened accidentally to Indian coffee during 19th-century sea voyages to Europe — and the result is unlike anything else: malty, spicy, and deeply earthy.",
+};
+
 const PROCESS_COLORS = {
   "Washed":     { bg: "#1A2E3A", border: "#2A6A8A", text: "#7ABBD0" },
   "Natural":    { bg: "#2E1A0E", border: "#8A4A2A", text: "#D09070" },
@@ -1230,6 +1238,8 @@ function getSimilar(coffee, n = 3) {
 }
 
 function CoffeeDetailModal({ coffee, onClose, onSelect }) {
+  const [showProcessExplainer, setShowProcessExplainer] = useState(false);
+
   // Close on Escape key
   useEffect(() => {
     function onKey(e) { if (e.key === "Escape") onClose(); }
@@ -1387,6 +1397,43 @@ function CoffeeDetailModal({ coffee, onClose, onSelect }) {
 
             {/* Roast bar */}
             <RoastBar roast={coffee.roast} />
+
+            {/* Processing method + explainer */}
+            <div>
+              <div style={{
+                fontSize: 9, color: COLORS.sub, letterSpacing: "0.2em",
+                textTransform: "uppercase", marginBottom: 7,
+              }}>
+                Processing Method
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <ProcessBadge process={coffee.process} size="lg" />
+                {PROCESS_EXPLAINERS[coffee.process] && (
+                  <button
+                    onClick={() => setShowProcessExplainer(p => !p)}
+                    style={{
+                      fontSize: 9, fontFamily: "Georgia, serif",
+                      background: "none", border: "none",
+                      color: COLORS.sub, cursor: "pointer",
+                      padding: 0, opacity: 0.7,
+                      textDecoration: "underline", letterSpacing: "0.04em",
+                    }}
+                  >
+                    {showProcessExplainer ? "hide" : "what does this mean?"}
+                  </button>
+                )}
+              </div>
+              {showProcessExplainer && PROCESS_EXPLAINERS[coffee.process] && (
+                <p style={{
+                  margin: "10px 0 0", fontSize: 10.5, color: COLORS.sub,
+                  fontStyle: "italic", lineHeight: 1.65, letterSpacing: "0.02em",
+                  borderLeft: `2px solid ${PROCESS_COLORS[coffee.process]?.border ?? COLORS.cardBorder}`,
+                  paddingLeft: 10,
+                }}>
+                  {PROCESS_EXPLAINERS[coffee.process]}
+                </p>
+              )}
+            </div>
 
             {/* Brew methods */}
             <div>
