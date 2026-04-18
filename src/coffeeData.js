@@ -712,6 +712,148 @@ export const coffees = [
     ],
   },
   {
+    name: "Ugandan",
+    region: "East Africa",
+    scores: [7, 4, 6, 4, 3, 5],
+    note: "Dark Chocolate · Black Plum · Cedar",
+    roast: "Medium",
+    process: "Washed",
+    brewMethods: ["Pour Over", "French Press", "Espresso", "Drip"],
+    highlights: [
+      {
+        tags: ["🍒 Black Plum", "🍇 Dark Berry", "🍊 Blood Orange"],
+        note: "Mt. Elgon and Rwenzori Mountains washed lots (1,500–2,100 MASL, volcanic soil) produce a dark plum and blood orange fruit character that is more restrained than Kenyan but with genuine depth. Genuine Origin describes their Uganda Sipi Falls as 'blackberry, dark chocolate, and stone fruit with a syrupy body' — a profile built on richness rather than brightness.",
+      },
+      null,
+      {
+        tags: ["🍫 Dark Chocolate", "🟤 Brown Sugar", "🍮 Caramel"],
+        note: "Uganda's SL14 and SL28 varietals — the same Scott Lab selections that define Kenyan excellence — produce a consistent dark chocolate and brown sugar sweetness at medium roast. The heavy volcanic soil of Mt. Elgon's slopes concentrates sweetness in a way that supports espresso blending as well as single-origin pour over.",
+      },
+      {
+        tags: ["🪵 Cedar", "🍫 Cocoa"],
+        note: "A woody cedar and cocoa character in the finish — more earthy than Kenyan but less extreme than Indonesian origins. This sets Ugandan washed lots apart from its East African neighbors, adding structural depth to the fruit-and-chocolate foundation.",
+      },
+      null,
+      {
+        tags: ["🌍 Volcanic Earth", "🪵 Forest Floor"],
+        note: "A mild but present earthy depth from Uganda's dense highland growing conditions along the Rwenzori range — sometimes called the 'Mountains of the Moon.' The terroir adds character without the heavy tobacco or peat notes of Indonesian origins.",
+      },
+    ],
+  },
+  {
+    name: "Nicaraguan",
+    region: "Central America",
+    scores: [5, 4, 8, 6, 2, 2],
+    note: "Milk Chocolate · Brown Sugar · Mild Cherry",
+    roast: "Light–Medium",
+    process: "Washed",
+    brewMethods: ["Pour Over", "Espresso", "French Press", "Drip"],
+    highlights: [
+      {
+        tags: ["🍒 Mild Cherry", "🍑 Peach", "🍊 Tangerine"],
+        note: "Jinotega and Matagalpa — Nicaragua's two premier coffee regions (1,100–1,700 MASL, volcanic soil) — produce a clean, mild fruit character: red cherry and peach with gentle tangerine brightness. Cup of Excellence Nicaragua lots from Jinotega consistently score 88–93 with notes of 'red fruit and light citrus zest over a chocolate base.'",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌿 Light Floral"],
+        note: "A subtle jasmine and light floral note from high-altitude Jinotega Caturra and Bourbon — more restrained than Rwandan or Colombian florals but present enough to lift the cup above a purely chocolate-nutty profile.",
+      },
+      {
+        tags: ["🍫 Milk Chocolate", "🟤 Brown Sugar", "🍯 Honey"],
+        note: "Nicaragua's calling card is approachable, consistent sweetness — milk chocolate, brown sugar, and a honey finish that makes it one of the most food-friendly coffees in the specialty world. The Segovia and Nueva Segovia regions at higher altitude add a cleaner sweetness to the traditional Nicaraguan profile.",
+      },
+      {
+        tags: ["🌰 Walnut", "🥜 Almond", "🍫 Cocoa Powder"],
+        note: "A solid walnut and almond nuttiness from Caturra, Bourbon, and the locally-developed Maracaturra varietal — more prominent than Honduran or Costa Rican nut notes, making Nicaraguan an especially versatile espresso component.",
+      },
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Ecuadorian",
+    region: "South America",
+    scores: [7, 5, 8, 3, 2, 1],
+    note: "Tropical Fruit · Honey · Orange Blossom",
+    roast: "Light",
+    process: "Washed",
+    brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    highlights: [
+      {
+        tags: ["🍍 Tropical Fruit", "🍊 Orange", "🍑 Yellow Peach"],
+        note: "Ecuador's Loja and Zamora Chinchipe provinces (1,600–2,200 MASL, Andean volcanic foothills) produce a distinctly sweet, juicy tropical fruit profile unlike any other South American origin. The Green Coffee Collective describes their Ecuador Loja lots as 'jam-like tropical sweetness — pineapple, orange, and peach that set it apart from cleaner Colombian or Bolivian profiles.'",
+      },
+      {
+        tags: ["🌸 Orange Blossom", "🌸 Jasmine"],
+        note: "A notable orange blossom and jasmine floral note from Ecuador's high-altitude Typica and Caturra — more fragrant than Colombian or Peruvian equivalents. Ecuador's western Andes microclimate, influenced by both Pacific moisture and Andean altitude, creates a floral expressiveness rare in South American washed coffees.",
+      },
+      {
+        tags: ["🍯 Honey", "🍮 Brown Sugar", "🌾 Cane Sugar"],
+        note: "A rich, honey-forward sweetness that intensifies as the cup cools — the signature of Ecuador's extreme diurnal temperature swings concentrating sugars in the cherry. Happy Mug and Green Coffee Collective both note Ecuador as 'a sweet, crowd-pleasing origin that surprises most people who expect it to taste like Colombia.'",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    name: "Flores",
+    region: "Indonesia",
+    scores: [4, 3, 7, 4, 3, 6],
+    note: "Milk Chocolate · Dark Berry · Cedar",
+    roast: "Medium",
+    process: "Wet-Hulled",
+    brewMethods: ["French Press", "Drip", "Espresso", "Pour Over"],
+    highlights: [
+      {
+        tags: ["🍒 Dark Berry", "🍑 Dried Stone Fruit", "🍷 Wine-like"],
+        note: "Flores — the 'Island of Flowers' east of Sumbawa — produces wet-hulled coffees with more fruit presence than Sumatran lots and a wine-like berry note absent from Sulawesi Toraja. The Bajawa and Manggarai highlands (1,200–1,800 MASL) grow Typica-descendant varietals that retain more cherry character through the Giling Basah process.",
+      },
+      null,
+      {
+        tags: ["🍫 Milk Chocolate", "🍮 Rustic Caramel", "🟤 Brown Sugar"],
+        note: "The most accessible sweetness of the Indonesian wet-hulled origins — a smooth milk chocolate and rustic caramel profile that makes Flores an approachable entry point into Indonesian coffee. Sweet Maria's describes Bajawa Flores as 'milk chocolate and brown sugar with a clean earthiness — less aggressive than Sumatra, more elegant than most Sulawesi.'",
+      },
+      {
+        tags: ["🪵 Cedar", "🌰 Cocoa Nib"],
+        note: "A cedar and cocoa nib nuttiness from Flores' volcanic basalt soils and traditional Typica genetics — lighter and more defined than the heavy woody notes of Sumatran wet-hull, reflecting Flores' gentler processing conditions.",
+      },
+      {
+        tags: ["🌶️ Black Pepper", "🍂 Clove"],
+        note: "A restrained spice note — black pepper and clove — that adds complexity without the intensity of Sumatran or Yemeni spice. Present in the finish as the cup cools.",
+      },
+      {
+        tags: ["🌍 Forest Floor", "🪵 Damp Earth"],
+        note: "A moderate earthy depth from Flores' wet-hull processing — less extreme than Sumatra's peat-and-tobacco depth but enough to ground the chocolate and fruit in genuine Indonesian terroir. Flores sits between Sulawesi's accessibility and Sumatra's intensity.",
+      },
+    ],
+  },
+  {
+    name: "Myanmar",
+    region: "Southeast Asia",
+    scores: [7, 6, 7, 3, 2, 2],
+    note: "Peach · Jasmine · Honey",
+    roast: "Light–Medium",
+    process: "Natural",
+    brewMethods: ["Pour Over", "AeroPress", "Chemex", "Cold Brew"],
+    highlights: [
+      {
+        tags: ["🍑 Peach", "🍒 Red Cherry", "🍊 Mandarin"],
+        note: "Myanmar's Pyin Oo Lwin highlands — known as the 'City of Eternal Spring' at 1,070 MASL with cooler temperatures than most SE Asian origins — produce a clean, fruit-forward natural with peach and mandarin clarity. Sweet Maria's calls Myanmar naturals 'a revelation for SE Asian coffee — fruit-forward in a way Vietnam and Laos naturals rarely achieve.' The specialty coffee industry only gained a foothold here post-2015.",
+      },
+      {
+        tags: ["🌸 Jasmine", "🌿 Chamomile"],
+        note: "A notable jasmine and chamomile floral character from Myanmar's locally-adapted Typica and Bourbon varietals — completely unexpected for a Southeast Asian origin and more reminiscent of Ethiopian or Bolivian profiles. This is Myanmar's most distinctive characteristic and what is driving rapid interest from specialty importers.",
+      },
+      {
+        tags: ["🍯 Honey", "🟤 Brown Sugar", "🍮 Caramel"],
+        note: "Natural-processed Myanmar lots develop a honey and brown sugar sweetness from slow drying in the cooler Pyin Oo Lwin climate — less wild than Ethiopian naturals but with genuine depth. Green Coffee Collective notes Myanmar naturals as 'a gentle, approachable natural without the ferment complexity that intimidates some drinkers.'",
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+  {
     name: "Filipino Barako",
     region: "Southeast Asia",
     scores: [5, 6, 4, 5, 7, 8],
