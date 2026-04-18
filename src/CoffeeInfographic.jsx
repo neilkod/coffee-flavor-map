@@ -1945,7 +1945,7 @@ function CompareRadar({ scoresA, scoresB, colorA, colorB, size = 220 }) {
   const dimLabelPos = DIMS.map((_, i) => toXY((2 * Math.PI * i) / NUM, R + 14));
   const dimTickPos  = DIMS.map((_, i) => toXY((2 * Math.PI * i) / NUM, R));
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} style={{ overflow: "visible", width: "min(220px, 80vw)", height: "auto" }}>
+    <svg viewBox={`0 0 ${size} ${size}`} style={{ overflow: "visible", width: "min(340px, 85vw)", height: "auto" }}>
       <defs>
         <filter id="cmp-glow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
@@ -2013,7 +2013,7 @@ function CompareView() {
 
       {/* Radar */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 24 }}>
-        <CompareRadar scoresA={a.scores} scoresB={b.scores} colorA={COMPARE_COLORS[0]} colorB={COMPARE_COLORS[1]} size={240} />
+        <CompareRadar scoresA={a.scores} scoresB={b.scores} colorA={COMPARE_COLORS[0]} colorB={COMPARE_COLORS[1]} size={340} />
         <div style={{ display: "flex", gap: 28, marginTop: 12 }}>
           {[a, b].map((c, idx) => (
             <div key={c.name} style={{ display: "flex", alignItems: "center", gap: 7 }}>
