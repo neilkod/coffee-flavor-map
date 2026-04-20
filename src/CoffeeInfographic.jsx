@@ -1437,6 +1437,30 @@ function CoffeeDetailModal({ coffee, onClose, onSelect }) {
               )}
             </div>
 
+            {/* Cultivars */}
+            {coffee.cultivars?.length > 0 && (
+              <div>
+                <div style={{
+                  fontSize: 9, color: COLORS.sub, letterSpacing: "0.2em",
+                  textTransform: "uppercase", marginBottom: 7,
+                }}>
+                  Cultivars
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {coffee.cultivars.map((cv) => (
+                    <span key={cv} style={{
+                      fontSize: 10, color: "#A98BC7",
+                      background: "#A98BC711",
+                      border: "1px solid #A98BC744",
+                      borderRadius: 4, padding: "2px 8px",
+                    }}>
+                      {cv}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Brew methods */}
             <div>
               <div style={{
@@ -2085,6 +2109,20 @@ function CompareView() {
               <ProcessBadge process={c.process} size="sm" />
               <span style={{ fontSize: 9, color: COLORS.sub, alignSelf: "center" }}>{c.roast} roast</span>
             </div>
+            {c.cultivars?.length > 0 && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 10 }}>
+                {c.cultivars.map(cv => (
+                  <span key={cv} style={{
+                    fontSize: 9, color: "#A98BC7",
+                    background: "#A98BC711",
+                    border: "1px solid #A98BC744",
+                    borderRadius: 4, padding: "2px 7px",
+                  }}>
+                    {cv}
+                  </span>
+                ))}
+              </div>
+            )}
             <p style={{ margin: 0, fontSize: 10.5, color: COLORS.sub, fontStyle: "italic", lineHeight: 1.65 }}>{c.note}</p>
           </div>
         ))}

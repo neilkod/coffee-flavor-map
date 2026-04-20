@@ -7,6 +7,7 @@ export const coffees = [
     roast: "Light",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    cultivars: ["Heirloom", "Kurume", "Wolisho", "74110"],
     highlights: [
       {
         tags: ["🫐 Blueberry", "🍋 Bergamot", "🍊 Tangerine"],
@@ -33,6 +34,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Espresso", "AeroPress", "Drip"],
+    cultivars: ["Castillo", "Caturra", "Colombia", "Bourbon", "Tabi"],
     highlights: [
       {
         tags: ["🍒 Red Cherry", "🍇 Blackberry", "🍊 Blood Orange"],
@@ -59,6 +61,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    cultivars: ["SL28", "SL34", "Ruiru 11", "Batian"],
     highlights: [
       {
         tags: ["🍇 Blackcurrant", "🍊 Blood Orange", "🍅 Tomato Sweetness"],
@@ -85,6 +88,7 @@ export const coffees = [
     roast: "Medium–Dark",
     process: "Wet-Hulled",
     brewMethods: ["French Press", "Drip", "Espresso", "Cold Brew"],
+    cultivars: ["Typica", "Ateng", "Bourbon"],
     highlights: [
       null,
       null,
@@ -111,6 +115,7 @@ export const coffees = [
     roast: "Medium–Dark",
     process: "Natural",
     brewMethods: ["Espresso", "French Press", "Moka Pot", "Cold Brew"],
+    cultivars: ["Bourbon Amarelo", "Yellow Catuaí", "Mundo Novo", "Typica"],
     highlights: [
       {
         tags: ["🍑 Dried Apricot", "🍇 Raisin", "🍒 Red Cherry"],
@@ -137,6 +142,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "French Press", "Espresso", "Drip"],
+    cultivars: ["Bourbon", "Caturra", "Catuaí", "Typica", "Pache"],
     highlights: [
       {
         tags: ["🍋 Meyer Lemon", "🍑 Peach", "🍎 Orchard Fruit"],
@@ -166,6 +172,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Honey",
     brewMethods: ["Pour Over", "AeroPress", "Chemex", "Espresso"],
+    cultivars: ["Caturra", "Villa Sarchi", "Catuaí", "Typica"],
     highlights: [
       {
         tags: ["🍑 Apricot", "🍒 Red Cherry", "🍎 Red Apple"],
@@ -189,6 +196,7 @@ export const coffees = [
     roast: "Medium",
     process: "Natural",
     brewMethods: ["Ibrik / Turkish", "French Press", "Chemex", "Espresso"],
+    cultivars: ["Udaini", "Dawairi", "Jaadi", "Tufahi"],
     highlights: [
       {
         tags: ["🍇 Raisin", "🍑 Dried Apricot", "🫐 Fig"],
@@ -221,6 +229,7 @@ export const coffees = [
     roast: "Medium",
     process: "Washed",
     brewMethods: ["Chemex", "Pour Over", "Drip", "French Press"],
+    cultivars: ["Blue Mountain Typica"],
     highlights: [
       null,
       {
@@ -247,6 +256,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Drip", "French Press", "Cold Brew"],
+    cultivars: ["Kona Typica"],
     highlights: [
       {
         tags: ["🍑 Peach", "🍒 Fresh Cherry", "🍊 Light Citrus"],
@@ -276,6 +286,7 @@ export const coffees = [
     roast: "Dark",
     process: "Natural",
     brewMethods: ["Phin Filter", "Espresso", "Moka Pot", "Cold Brew"],
+    cultivars: ["Robusta", "Catimor"],
     highlights: [
       null,
       null,
@@ -302,6 +313,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "Drip", "AeroPress"],
+    cultivars: ["Typica", "Caturra", "Bourbon", "Catimor"],
     highlights: [
       {
         tags: ["🍋 Orange Zest", "🫐 Plum", "🍑 Passion Fruit"],
@@ -328,6 +340,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Drip", "French Press", "Cold Brew"],
+    cultivars: ["Typica", "Bourbon", "Caturra", "Mundo Novo"],
     highlights: [
       {
         tags: ["🍊 Orange Zest", "🍑 Peach", "🍋 Mild Citrus"],
@@ -357,6 +370,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "AeroPress", "Chemex", "Cold Brew"],
+    cultivars: ["Bourbon", "Mayaguez 71", "Jackson"],
     highlights: [
       {
         tags: ["🍒 Red Cherry", "🍊 Mandarin", "🫐 Red Currant"],
@@ -386,6 +400,7 @@ export const coffees = [
     roast: "Medium–Dark",
     process: "Monsooned",
     brewMethods: ["Espresso", "French Press", "Moka Pot", "Cold Brew"],
+    cultivars: ["Kent", "S795", "Chandragiri", "Cauvery"],
     highlights: [
       null,
       null,
@@ -415,6 +430,7 @@ export const coffees = [
     roast: "Light",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress"],
+    cultivars: ["Geisha"],
     highlights: [
       {
         tags: ["🍑 Apricot", "🍊 Tangerine", "🍇 Redcurrant"],
@@ -441,6 +457,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    cultivars: ["Bourbon", "Jackson"],
     highlights: [
       {
         tags: ["🍇 Mulberry", "🍑 Dried Apricot", "🍊 Clementine"],
@@ -467,6 +484,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "French Press", "AeroPress"],
+    cultivars: ["Bourbon", "Kent", "N39", "Arusha"],
     highlights: [
       {
         tags: ["🍇 Blackcurrant", "🫐 Dark Plum", "🍓 Wild Berry"],
@@ -493,6 +511,7 @@ export const coffees = [
     roast: "Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Espresso", "French Press", "Drip"],
+    cultivars: ["Catuaí", "Lempira", "IHCAFE 90", "Typica", "Bourbon"],
     highlights: [
       {
         tags: ["🍊 Orange Zest", "🍑 Peach", "🍒 Mild Cherry"],
@@ -519,6 +538,7 @@ export const coffees = [
     roast: "Medium",
     process: "Washed",
     brewMethods: ["French Press", "Drip", "Espresso", "Cold Brew"],
+    cultivars: ["Typica", "Blue Mountain", "Arusha", "Mundo Novo"],
     highlights: [
       {
         tags: ["🍑 Dried Apricot", "🍇 Wild Berry", "🍷 Port-like"],
@@ -548,6 +568,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Natural",
     brewMethods: ["Pour Over", "French Press", "AeroPress", "Cold Brew"],
+    cultivars: ["Heirloom", "Longberry", "Shortberry"],
     highlights: [
       {
         tags: ["🫐 Blueberry Jam", "🍇 Winey Dark Fruit", "🍒 Black Cherry"],
@@ -574,6 +595,7 @@ export const coffees = [
     roast: "Medium–Dark",
     process: "Wet-Hulled",
     brewMethods: ["French Press", "Drip", "Espresso", "Moka Pot"],
+    cultivars: ["S795", "Typica", "Catimor"],
     highlights: [
       {
         tags: ["🍒 Black Cherry", "🍇 Dark Plum", "🍑 Dried Stone Fruit"],
@@ -606,6 +628,7 @@ export const coffees = [
     roast: "Light",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    cultivars: ["Typica", "Caturra", "Catuaí"],
     highlights: [
       {
         tags: ["🍎 Crisp Apple", "🍊 Blood Orange", "🍑 White Peach"],
@@ -635,6 +658,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "AeroPress", "Chemex", "Espresso"],
+    cultivars: ["Pacamara"],
     highlights: [
       {
         tags: ["🍒 Red Cherry", "🍑 Peach", "🍊 Mandarin"],
@@ -664,6 +688,7 @@ export const coffees = [
     roast: "Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "French Press", "Drip", "AeroPress"],
+    cultivars: ["Bourbon", "Jackson", "Typica"],
     highlights: [
       {
         tags: ["🍒 Dark Cherry", "🍊 Sweet Orange", "🍇 Blackcurrant"],
@@ -690,6 +715,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "French Press"],
+    cultivars: ["Green Tipped Bourbon"],
     highlights: [
       {
         tags: ["🍋 Citrus Zest", "🍊 Blood Orange", "🍑 Apricot"],
@@ -719,6 +745,7 @@ export const coffees = [
     roast: "Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "French Press", "Espresso", "Drip"],
+    cultivars: ["SL14", "SL28", "Bourbon", "Robusta"],
     highlights: [
       {
         tags: ["🍒 Black Plum", "🍇 Dark Berry", "🍊 Blood Orange"],
@@ -748,6 +775,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Washed",
     brewMethods: ["Pour Over", "Espresso", "French Press", "Drip"],
+    cultivars: ["Caturra", "Bourbon", "Maracaturra", "Catuaí"],
     highlights: [
       {
         tags: ["🍒 Mild Cherry", "🍑 Peach", "🍊 Tangerine"],
@@ -777,6 +805,7 @@ export const coffees = [
     roast: "Light",
     process: "Washed",
     brewMethods: ["Pour Over", "Chemex", "AeroPress", "Cold Brew"],
+    cultivars: ["Typica", "Caturra", "Bourbon"],
     highlights: [
       {
         tags: ["🍍 Tropical Fruit", "🍊 Orange", "🍑 Yellow Peach"],
@@ -803,6 +832,7 @@ export const coffees = [
     roast: "Medium",
     process: "Wet-Hulled",
     brewMethods: ["French Press", "Drip", "Espresso", "Pour Over"],
+    cultivars: ["Typica", "Catimor"],
     highlights: [
       {
         tags: ["🍒 Dark Berry", "🍑 Dried Stone Fruit", "🍷 Wine-like"],
@@ -835,6 +865,7 @@ export const coffees = [
     roast: "Light–Medium",
     process: "Natural",
     brewMethods: ["Pour Over", "AeroPress", "Chemex", "Cold Brew"],
+    cultivars: ["Typica", "Bourbon", "Catuaí", "Catimor"],
     highlights: [
       {
         tags: ["🍑 Peach", "🍒 Red Cherry", "🍊 Mandarin"],
@@ -861,6 +892,7 @@ export const coffees = [
     roast: "Medium–Dark",
     process: "Natural",
     brewMethods: ["French Press", "Moka Pot", "Espresso", "Phin Filter"],
+    cultivars: ["Liberica"],
     highlights: [
       {
         tags: ["🍈 Jackfruit", "🍊 Bitter Orange", "🍇 Dark Berry"],
