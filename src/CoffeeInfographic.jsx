@@ -1641,6 +1641,58 @@ function pcAxisLabels(loadings) {
   return { pos, neg };
 }
 
+function pcaLabelText(name) {
+  const overrides = {
+    "Ethiopian Harrar":      "Eth. Harrar",
+    "Jamaican Blue Mountain":"Jamaican",
+    "Hawaiian Kona":         "Kona",
+    "Papua New Guinea":      "Papua NG",
+    "Sulawesi Toraja":       "Sulawesi",
+    "Salvadoran Pacamara":   "Pacamara",
+    "Congolese Kivu":        "Congolese",
+    "St. Helena":            "St. Helena",
+    "Filipino Barako":       "Barako",
+    "Indian Monsoon":        "Monsoon",
+    "Panama Geisha":         "Geisha",
+  };
+  return overrides[name] ?? name.split(" ")[0];
+}
+
+// Greedy label de-collision: tries 8 anchor positions per point, picks lowest overlap.
+function computeLabelPositions(pts, labels) {
+  const charW = 4.5, textH = 9, dotR = 7.5;
+  const candidates = [
+    { dx: dotR,       dy: 4,           anchor: "start"  }, // right
+    { dx: dotR,       dy: -5,          anchor: "start"  }, // upper-right
+    { dx: -dotR,      dy: 4,           anchor: "end"    }, // left
+    { dx: -dotR,      dy: -5,          anchor: "end"    }, // upper-left
+    { dx: 0,          dy: -(dotR + 2), anchor: "middle" }, // top
+    { dx: 0,          dy: dotR + textH,anchor: "middle" }, // bottom
+    { dx: dotR,       dy: 13,          anchor: "start"  }, // lower-right
+    { dx: -dotR,      dy: 13,          anchor: "end"    }, // lower-left
+  ];
+  const placed = [];
+  return pts.map(({ cx, cy }, i) => {
+    const lbl = labels[i];
+    const w = lbl.length * charW;
+    let best = null, bestScore = Infinity;
+    for (const c of candidates) {
+      const tx = cx + c.dx, ty = cy + c.dy;
+      const l = c.anchor === "start" ? tx : c.anchor === "end" ? tx - w : tx - w / 2;
+      const r = l + w, t = ty - textH, b = ty;
+      let score = 0;
+      for (const p of placed) {
+        score += Math.max(0, Math.min(r, p.r) - Math.max(l, p.l)) *
+                 Math.max(0, Math.min(b, p.b) - Math.max(t, p.t));
+      }
+      if (score < bestScore) { bestScore = score; best = { c, l, r, t, b }; }
+      if (score === 0) break;
+    }
+    placed.push(best);
+    return { x: cx + best.c.dx, y: cy + best.c.dy, anchor: best.c.anchor };
+  });
+}
+
 // ─── Discover View ────────────────────────────────────────────────────────────
 
 function DiscoverView({ onSelectCoffee }) {
@@ -1842,6 +1894,9 @@ function PCAScatter() {
     cy: H - PAD - ((y - yMin) / yRange) * (H - 2 * PAD),
   }));
 
+  const pcaLabels = coffees.map(c => pcaLabelText(c.name));
+  const labelPos  = computeLabelPositions(pts, pcaLabels);
+
   return (
     <div style={{ maxWidth: 860, margin: "0 auto" }}>
 
@@ -1936,11 +1991,12 @@ function PCAScatter() {
                 stroke={fill} strokeWidth={0.8} strokeOpacity={0.5}
               />
               <text
-                x={pt.cx + 8} y={pt.cy + 4}
+                x={labelPos[i].x} y={labelPos[i].y}
                 fill="#F0DEB8" fontSize={7.5} fillOpacity={0.6}
+                textAnchor={labelPos[i].anchor}
                 pointerEvents="none"
               >
-                {coffee.name.split(" ")[0]}
+                {pcaLabels[i]}
               </text>
             </g>
           );
