@@ -345,6 +345,21 @@ const PROCESS_COLORS = {
   "Monsooned":  { bg: "#2A1A2E", border: "#6A3A8A", text: "#B07AD0" },
 };
 
+const REGION_COLORS = {
+  "East Africa":          "#E8A836",
+  "Central Africa":       "#D45A3A",
+  "South Atlantic Island":"#7EB8D0",
+  "South America":        "#5EC45F",
+  "Central America":      "#3BBFAD",
+  "North America":        "#A8C43A",
+  "Middle East":          "#C8A860",
+  "South Asia":           "#D468A0",
+  "Southeast Asia":       "#B07ED0",
+  "Indonesia":            "#E06B2E",
+  "Pacific":              "#6FC8E8",
+  "Caribbean":            "#4A9BD4",
+};
+
 function ProcessBadge({ process, size = "sm" }) {
   const c = PROCESS_COLORS[process] ?? { bg: "#1F1409", border: COLORS.gridOuter, text: COLORS.label };
   const fs = size === "lg" ? 10 : 8.5;
@@ -1945,10 +1960,10 @@ function PCAScatter() {
                 what matter.
               </p>
               <p style={{ margin: 0 }}>
-                Dot colors show each coffee's <em style={{ color: "#F0DEB8" }}>strongest flavor dimension</em> —
-                the one it scores highest on. These are the same colors used for Fruity, Floral, Sweet, Nutty,
-                Spicy, and Earthy throughout the rest of the site, so clusters of the same color indicate
-                coffees that share a dominant flavor character.
+                Dot colors show each coffee's <em style={{ color: "#F0DEB8" }}>growing region</em>.
+                When coffees from the same region cluster together, it means geography and processing
+                traditions produce similar flavor profiles — when they scatter, it means that origin
+                is genuinely distinct from its neighbors.
               </p>
             </div>
           </div>
@@ -1978,11 +1993,10 @@ function PCAScatter() {
           ↓ {pcAxisLabels(PC2_LOAD).neg}
         </text>
 
-        {/* Points — colored by dominant flavor dimension */}
+        {/* Points — colored by region */}
         {pts.map((pt, i) => {
           const coffee = coffees[i];
-          const domIdx = coffee.scores.indexOf(Math.max(...coffee.scores));
-          const fill   = DIM_COLORS[domIdx];
+          const fill   = REGION_COLORS[coffee.region] ?? COLORS.label;
           return (
             <g key={i}>
               <circle
@@ -2003,12 +2017,12 @@ function PCAScatter() {
         })}
       </svg>
 
-      {/* Dimension legend */}
+      {/* Region legend */}
       <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 14, marginTop: 10 }}>
-        {DIMS.map((dim, i) => (
-          <div key={dim} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: DIM_COLORS[i], opacity: 0.85 }} />
-            <span style={{ fontSize: 8.5, color: COLORS.sub, fontFamily: "Georgia, serif" }}>{dim}</span>
+        {Object.entries(REGION_COLORS).map(([region, color]) => (
+          <div key={region} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, opacity: 0.85 }} />
+            <span style={{ fontSize: 8.5, color: COLORS.sub, fontFamily: "Georgia, serif" }}>{region}</span>
           </div>
         ))}
       </div>
