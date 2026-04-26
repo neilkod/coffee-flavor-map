@@ -495,7 +495,9 @@ const TAG_INDEX = DIMS.map((_, dimIdx) => {
     });
   });
   const stripEmoji = (s) => s.replace(/^\S+\s/, "");
-  return Array.from(map.entries()).sort((a, b) => stripEmoji(a[0]).localeCompare(stripEmoji(b[0])));
+  return Array.from(map.entries())
+    .sort((a, b) => stripEmoji(a[0]).localeCompare(stripEmoji(b[0])))
+    .map(([tag, cs]) => [tag, cs.slice().sort((a, b) => a.name.localeCompare(b.name))]);
 });
 
 // Process index: process method → coffees[]
@@ -505,8 +507,9 @@ const PROCESS_INDEX = (() => {
     if (!map.has(coffee.process)) map.set(coffee.process, []);
     map.get(coffee.process).push(coffee);
   });
-  // Sort by count descending
-  return Array.from(map.entries()).sort((a, b) => b[1].length - a[1].length);
+  return Array.from(map.entries())
+    .sort((a, b) => b[1].length - a[1].length)
+    .map(([process, cs]) => [process, cs.slice().sort((a, b) => a.name.localeCompare(b.name))]);
 })();
 
 // ─── Chip Radar Tooltip ───────────────────────────────────────────────────────
@@ -1732,7 +1735,7 @@ function DiscoverView({ onSelectCoffee }) {
       return { coffee, score: selected.size ? hits / selected.size : 0, matches };
     })
     .filter(r => r.score > 0)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.score - a.score || a.coffee.name.localeCompare(b.coffee.name));
 
   return (
     <div style={{ maxWidth: 860, margin: "0 auto" }}>
@@ -2331,7 +2334,7 @@ export default function CoffeeInfographic() {
 
   const sortedCoffees =
     sortDim === null
-      ? coffees
+      ? coffees.slice().sort((a, b) => a.name.localeCompare(b.name))
       : coffees.slice().sort((a, b) =>
           sortDir === "desc"
             ? b.scores[sortDim] - a.scores[sortDim]
@@ -2639,7 +2642,7 @@ export default function CoffeeInfographic() {
             {[
               {
                 label: "Brew Method",
-                items: ["Pour Over","Chemex","AeroPress","French Press","Drip","Espresso","Cold Brew","Moka Pot","Ibrik / Turkish","Phin Filter"],
+                items: ["AeroPress","Chemex","Cold Brew","Drip","Espresso","French Press","Ibrik / Turkish","Moka Pot","Phin Filter","Pour Over"],
                 filter: brewFilter,
                 toggle: toggleBrew,
               },
